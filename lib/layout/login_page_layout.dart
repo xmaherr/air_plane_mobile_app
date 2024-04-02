@@ -35,7 +35,7 @@ class LoginPageLayout extends StatelessWidget {
               height: 100,
             ),
             Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(21.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
