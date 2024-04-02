@@ -1,8 +1,5 @@
-import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../shared/components/components.dart';
 
@@ -12,6 +9,8 @@ class LoginPageLayout extends StatelessWidget {
   var passwordController = TextEditingController();
 
   var formKey = GlobalKey<FormState>();
+
+  LoginPageLayout({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +31,7 @@ class LoginPageLayout extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 100,
             ),
             Padding(
@@ -40,7 +39,7 @@ class LoginPageLayout extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Login',
                     style: TextStyle(
                       fontSize: 50,
@@ -57,12 +56,12 @@ class LoginPageLayout extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Expanded(
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(60),
@@ -70,7 +69,7 @@ class LoginPageLayout extends StatelessWidget {
                 ),
                 width: double.infinity,
                 child: Padding(
-                  padding: EdgeInsets.only(
+                  padding: const EdgeInsets.only(
                     top: 40,
                     left: 20,
                     right: 20
@@ -78,7 +77,7 @@ class LoginPageLayout extends StatelessWidget {
                   child: Column(
                     children: [
                       Padding(
-                        padding: EdgeInsets.all(20),
+                        padding: const EdgeInsets.all(20),
                         child: Form(
                           key: formKey,
                           child: Column(
@@ -90,13 +89,14 @@ class LoginPageLayout extends StatelessWidget {
                                   if (value!.isEmpty) {
                                     return "Email Address is required";
                                   }
+                                  return null;
                                 },
                                 prefix: Icons.email,
                                 label: "Email Address",
                                 outLineBorder: false,
                                 prefixIconColor: Colors.blue,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 60.0,
                               ),
                               defultFormField(
@@ -106,6 +106,7 @@ class LoginPageLayout extends StatelessWidget {
                                   if (value!.isEmpty) {
                                     return "Password is required";
                                   }
+                                  return null;
                                 },
                                 prefix: Icons.lock,
                                 label: "Password",
@@ -113,7 +114,7 @@ class LoginPageLayout extends StatelessWidget {
                                 isPassword: true,
                                 prefixIconColor: Colors.blue,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height:70 ,
                               ),
                               defultButton(
@@ -121,7 +122,6 @@ class LoginPageLayout extends StatelessWidget {
                                 {
                                   if(formKey.currentState!.validate())
                                   {
-                                    print('object');
                                   }
                                 },
                                 text: 'LOGIN',
@@ -131,12 +131,12 @@ class LoginPageLayout extends StatelessWidget {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text(
+                                  const Text(
                                       'Don\' have an account?'
                                   ),
                                   TextButton(
                                       onPressed:(){},
-                                      child: Text(
+                                      child: const Text(
                                         'Register Now',
                                         style: TextStyle(
                                             color: Colors.grey

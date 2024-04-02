@@ -1,9 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 
-import 'package:flutter/material.dart';
 
 class CloudPainter extends CustomPainter {
   @override
@@ -37,7 +33,7 @@ class CloudPainter extends CustomPainter {
 
 class CloudWidget extends StatelessWidget {
   double x, y;
-  CloudWidget({
+  CloudWidget({super.key,
     required this.x,
     required this.y,
   });
