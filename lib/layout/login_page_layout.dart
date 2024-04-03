@@ -1,10 +1,8 @@
-
 import 'package:flutter/material.dart';
 
 import '../shared/components/components.dart';
 
 class LoginPageLayout extends StatefulWidget {
-
   const LoginPageLayout({super.key});
 
   @override
@@ -42,7 +40,9 @@ class _LoginPageLayoutState extends State<LoginPageLayout> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 50,),
+              const SizedBox(
+                height: 50,
+              ),
               Padding(
                 padding: const EdgeInsets.all(21.0),
                 child: Column(
@@ -56,7 +56,7 @@ class _LoginPageLayoutState extends State<LoginPageLayout> {
                       ),
                     ),
                     Text(
-                      'Welcome to MARO Are Line',
+                      'Welcome to MARO Airlines',
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.white.withOpacity(0.8),
@@ -77,7 +77,8 @@ class _LoginPageLayoutState extends State<LoginPageLayout> {
                   ),
                   width: double.infinity,
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 60, left: 40, right: 40),
+                    padding:
+                        const EdgeInsets.only(top: 60, left: 40, right: 40),
                     child: Form(
                       key: formKey,
                       child: Column(
@@ -113,19 +114,16 @@ class _LoginPageLayoutState extends State<LoginPageLayout> {
                             outLineBorder: true,
                             isPassword: isPassword,
                             prefixIconColor: Colors.blue,
-                            suffex :IconButton(onPressed:()
-                            {
-                              isPassword=!isPassword;
-                              setState(() {
-
-                              });
-                            },
-                            icon: const Icon(
-                                    Icons.remove_red_eye,
-                                ),
+                            suffex: IconButton(
+                              onPressed: () {
+                                isPassword = !isPassword;
+                                setState(() {});
+                              },
+                              icon: const Icon(
+                                Icons.remove_red_eye,
+                              ),
                             ),
                           ),
-
                           const SizedBox(
                             height: 50,
                           ),
@@ -157,8 +155,7 @@ class _LoginPageLayoutState extends State<LoginPageLayout> {
                         ],
                       ),
                     ),
-                  )
-              ),
+                  )),
             ],
           ),
         ),
