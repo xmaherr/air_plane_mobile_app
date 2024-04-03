@@ -56,7 +56,7 @@ class _LoginPageLayoutState extends State<LoginPageLayout> {
                       ),
                     ),
                     Text(
-                      'Welcome to Omar Airlines',
+                      'Welcome to Paolo Airlines',
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.white.withOpacity(0.8),
