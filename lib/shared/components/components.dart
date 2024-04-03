@@ -1,10 +1,5 @@
-import 'dart:ffi';
-import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 
 Widget defultButton({
   double width= double.infinity,
@@ -35,10 +30,11 @@ Widget defultFormField({
   required TextEditingController controller,
   required TextInputType type,
   required String? Function(String?)  validator,
+  // ignore: use_function_type_syntax_for_parameters
   Function()  onSubmitted(value)?,
   required IconData prefix,
   String? label,
-  IconButton? Suffex,
+  IconButton? suffex,
   bool outLineBorder =false,
   bool isPassword =false,
   Color prefixIconColor =Colors.white,
@@ -48,12 +44,11 @@ Widget defultFormField({
       onFieldSubmitted: onSubmitted,
       decoration: InputDecoration(
           labelText: label,
-          border:outLineBorder? OutlineInputBorder(): InputBorder.none,
           prefixIcon: Icon(
             prefix,
           color: prefixIconColor,
           ),
-          suffixIcon: Suffex,
+          suffixIcon: suffex,
       ),
       validator:validator,
       obscureText: isPassword,
