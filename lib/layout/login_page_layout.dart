@@ -20,6 +20,8 @@ class _LoginPageLayoutState extends State<LoginPageLayout> {
 
   bool isPassword = true;
 
+ int? x=0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
