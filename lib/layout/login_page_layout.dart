@@ -1,26 +1,21 @@
-
+import 'package:air_plane/layout/home_layout.dart';
 import 'package:flutter/material.dart';
-
+import '../DB/db.dart';
 import '../shared/components/components.dart';
+import 'register_screen_layout.dart'; // Import the register screen file
 
-class LoginPageLayout extends StatefulWidget {
-
-  const LoginPageLayout({super.key});
+class LoginScreenLayout extends StatefulWidget {
+  const LoginScreenLayout({super.key});
 
   @override
-  State<LoginPageLayout> createState() => _LoginPageLayoutState();
+  State<LoginScreenLayout> createState() => _LoginScreenLayoutState();
 }
 
-class _LoginPageLayoutState extends State<LoginPageLayout> {
+class _LoginScreenLayoutState extends State<LoginScreenLayout> {
   var emailController = TextEditingController();
-
   var passwordController = TextEditingController();
-
   var formKey = GlobalKey<FormState>();
-
   bool isPassword = true;
-
- int? x=0;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +46,7 @@ class _LoginPageLayoutState extends State<LoginPageLayout> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      'Login',
+                      'Register',
                       style: TextStyle(
                         fontSize: 50,
                         color: Colors.white,
@@ -71,95 +66,116 @@ class _LoginPageLayoutState extends State<LoginPageLayout> {
                 height: 20,
               ),
               Container(
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(60),
-                        topRight: Radius.circular(60)),
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(60),
+                    topRight: Radius.circular(60),
                   ),
-                  width: double.infinity,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 60, left: 40, right: 40),
-                    child: Form(
-                      key: formKey,
-                      child: Column(
-                        children: [
-                          defultFormField(
-                            controller: emailController,
-                            type: TextInputType.emailAddress,
-                            validator: (String? value) {
-                              if (value!.isEmpty) {
-                                return "Email Address is required";
-                              }
-                              return null;
-                            },
-                            prefix: Icons.email,
-                            label: "Email Address",
-                            outLineBorder: true,
-                            prefixIconColor: Colors.blue,
-                          ),
-                          const SizedBox(
-                            height: 20.0,
-                          ),
-                          defultFormField(
-                            controller: passwordController,
-                            type: TextInputType.emailAddress,
-                            validator: (String? value) {
-                              if (value!.isEmpty) {
-                                return "Password is required";
-                              }
-                              return null;
-                            },
-                            prefix: Icons.lock,
-                            label: "Password",
-                            outLineBorder: true,
-                            isPassword: isPassword,
-                            prefixIconColor: Colors.blue,
-                            suffex :IconButton(onPressed:()
-                            {
-                              isPassword=!isPassword;
-                              setState(() {
+                ),
+                width: double.infinity,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 60, left: 40, right: 40),
+                  child: Form(
+                    key: formKey,
+                    child: Column(
+                      children: [
+                        defultFormField(
+                          controller: emailController,
+                          type: TextInputType.emailAddress,
+                          validator: (String? value) {
+                            if (value!.isEmpty) {
+                              return "Email Address is required";
+                            }
+                            return null;
+                          },
+                          prefix: Icons.email,
+                          label: "Email Address",
+                          outLineBorder: true,
+                          prefixIconColor: Colors.blue,
+                        ),
+                        const SizedBox(
+                          width: 20.0,
+                        ),
+                        defultFormField(
+                          controller: passwordController,
+                          type: TextInputType.emailAddress,
+                          validator: (String? value) {
+                            if (value!.isEmpty) {
+                              return "Password is required";
+                            }
+                            return null;
+                          },
+                          prefix: Icons.lock,
+                          label: "Password",
+                          outLineBorder: true,
+                          isPassword: isPassword,
+                          prefixIconColor: Colors.blue,
+                          suffex :IconButton(onPressed:()
+                          {
+                            isPassword=!isPassword;
+                            setState(() {
 
-                              });
-                            },
+                            });
+                          },
                             icon: const Icon(
-                                    Icons.remove_red_eye,
-                                ),
+                              Icons.remove_red_eye,
                             ),
                           ),
-
-                          const SizedBox(
-                            height: 50,
-                          ),
-                          defultButton(
-                            function: () {
-                              if (formKey.currentState!.validate()) {
-                                // Perform action upon successful validation
-                                // For example, navigate to another screen
-                                Navigator.pushNamed(context, '/home');
+                        ),
+                        const SizedBox(
+                          height: 50,
+                        ),
+                        defultButton(
+                          function: () {
+                            if (formKey.currentState!.validate()) {
+                              if(checkLogin(emailController.text, passwordController.text))
+                              {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const HomeScreenLayout(),
+                                  ),
+                                );
+                              }else{
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text('Incorrect email or password'),
+                                    backgroundColor: Colors.red, // Optional: Change snackbar color
+                                  ),
+                                );
                               }
-                            },
-                            text: 'LOGIN',
-                            radius: 15,
-                            textSize: 20,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Text('Don\'t have an account?'),
-                              TextButton(
-                                onPressed: () {},
-                                child: const Text(
-                                  'Register Now',
-                                  style: TextStyle(color: Colors.grey),
-                                ),
+                            }
+                          },
+                          text: 'LOGIN',
+                          radius: 15,
+                          textSize: 20,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text('Don\'t have an account?'),
+                            TextButton(
+                              onPressed: () {
+                                // Navigate to the register screen
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const RegisterScreenLayout(),
+                                  ),
+                                );
+                              },
+                              child: const Text(
+                                'Register Now',
+                                style: TextStyle(color: Colors.grey),
                               ),
-                            ],
-                          ),
-                        ],
-                      ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                  )
+                  ),
+                ),
               ),
             ],
           ),

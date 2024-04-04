@@ -32,12 +32,13 @@ Widget defultFormField({
   required String? Function(String?)  validator,
   // ignore: use_function_type_syntax_for_parameters
   Function()  onSubmitted(value)?,
-  required IconData prefix,
+  IconData? prefix,
   String? label,
   IconButton? suffex,
   bool outLineBorder =false,
   bool isPassword =false,
   Color prefixIconColor =Colors.white,
+  bool centerText =false,
 })=>TextFormField(
       controller: controller,
       keyboardType: type,
@@ -52,4 +53,5 @@ Widget defultFormField({
       ),
       validator:validator,
       obscureText: isPassword,
+      textAlign:centerText? TextAlign.center: TextAlign.start,
   );
