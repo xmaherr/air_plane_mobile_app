@@ -269,6 +269,7 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                               ],
                             ),
                             child: TextFormField(
+                              obscureText: true,
                               keyboardType: TextInputType.text,
                               controller: passwordController,
                               onFieldSubmitted: (value) {},
@@ -283,7 +284,7 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return 'pasword is required';
-                                } else if (value != passwordController.text) {
+                                } else if (value != passwordController2.text) {
                                   return "Passwords do not match";
                                 }
                                 return null;
@@ -308,6 +309,7 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                               ],
                             ),
                             child: TextFormField(
+                              obscureText: true,
                               controller: passwordController2,
                               keyboardType: TextInputType.text,
                               onFieldSubmitted: (value) {},
@@ -322,7 +324,7 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return 'Enter password again';
-                                } else if (value != passwordController2.text) {
+                                } else if (value!= passwordController.text) {
                                   return 'Passwords do not match';
                                 }
                                 return null;
