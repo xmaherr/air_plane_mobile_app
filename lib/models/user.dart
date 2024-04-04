@@ -1,4 +1,4 @@
-class User{
+class User {
   String _firstName;
   String _lastName;
   String _emailAddress;
@@ -6,12 +6,12 @@ class User{
   String _password;
 
   User(
-      this._firstName,
-      this._lastName,
-      this._emailAddress,
-      this._phoneNumber,
-      this._password,
-      );
+    this._firstName,
+    this._lastName,
+    this._emailAddress,
+    this._phoneNumber,
+    this._password,
+  );
   // ignore: unnecessary_getters_setters
   String get password => _password;
 

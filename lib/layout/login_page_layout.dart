@@ -39,7 +39,9 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 50,),
+              const SizedBox(
+                height: 50,
+              ),
               Padding(
                 padding: const EdgeInsets.all(21.0),
                 child: Column(
@@ -111,13 +113,11 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
                           outLineBorder: true,
                           isPassword: isPassword,
                           prefixIconColor: Colors.blue,
-                          suffex :IconButton(onPressed:()
-                          {
-                            isPassword=!isPassword;
-                            setState(() {
-
-                            });
-                          },
+                          suffex: IconButton(
+                            onPressed: () {
+                              isPassword = !isPassword;
+                              setState(() {});
+                            },
                             icon: const Icon(
                               Icons.remove_red_eye,
                             ),
@@ -129,19 +129,22 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
                         defultButton(
                           function: () {
                             if (formKey.currentState!.validate()) {
-                              if(checkLogin(emailController.text, passwordController.text))
-                              {
+                              if (checkLogin(emailController.text,
+                                  passwordController.text)) {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const HomeScreenLayout(),
+                                    builder: (context) =>
+                                        const HomeScreenLayout(),
                                   ),
                                 );
-                              }else{
+                              } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
-                                    content: Text('Incorrect email or password'),
-                                    backgroundColor: Colors.red, // Optional: Change snackbar color
+                                    content:
+                                        Text('Incorrect email or password'),
+                                    backgroundColor: Colors
+                                        .red, // Optional: Change snackbar color
                                   ),
                                 );
                               }
@@ -161,7 +164,8 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const RegisterScreenLayout(),
+                                    builder: (context) =>
+                                        const RegisterScreenLayout(),
                                   ),
                                 );
                               },

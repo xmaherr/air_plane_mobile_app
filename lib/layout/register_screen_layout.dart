@@ -324,7 +324,7 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return 'Enter password again';
-                                } else if (value!= passwordController.text) {
+                                } else if (value != passwordController.text) {
                                   return 'Passwords do not match';
                                 }
                                 return null;
@@ -348,7 +348,7 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) =>
-                                    const LoginScreenLayout(),
+                                        const LoginScreenLayout(),
                                   ),
                                 );
                               }
