@@ -48,14 +48,14 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      'Register',
+                      'Login',
                       style: TextStyle(
                         fontSize: 50,
                         color: Colors.white,
                       ),
                     ),
                     Text(
-                      'Welcome to MARO Are Line',
+                      'Welcome to MARO Airlines',
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.white.withOpacity(0.8),

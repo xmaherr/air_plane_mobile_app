@@ -63,14 +63,14 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
-                        'Login',
+                        'Register',
                         style: TextStyle(
                           fontSize: 50,
                           color: Colors.white,
                         ),
                       ),
                       Text(
-                        'Welcome to MARO Are Line',
+                        'Register now at MARO Airlines',
                         style: TextStyle(
                           fontSize: 20,
                           color: Colors.white.withOpacity(0.8),
@@ -388,7 +388,9 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Text('have an account?'),
+                              const Text(
+                                'have already an account?',
+                              ),
                               TextButton(
                                 onPressed: () {
                                   // Navigate to the register screen
