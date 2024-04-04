@@ -126,6 +126,36 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
                             ),
                           ),
                         ),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(15),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey
+                                    .withOpacity(0.5), // Shadow color
+                                spreadRadius: 2, // Spread radius
+                                blurRadius: 5, // Blur radius
+                                offset: const Offset(0, 0), // Offset
+                              ),
+                            ],
+                          ),
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              labelText: 'new filed',
+                                labelStyle: const TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 15,
+                                ),
+                              prefixIcon: Icon(Icons.add),
+                              suffixIcon:IconButton(
+                                onPressed: (){},
+                                icon:Icon(Icons.add),
+                              ),
+                              border: InputBorder.none
+                            ),
+                          ),
+                        ),
                         const SizedBox(
                           height: 50,
                         ),

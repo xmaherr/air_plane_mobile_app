@@ -272,30 +272,29 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                             ),
                             child: TextFormField(
                               obscureText: isPassword,
+                              decoration: InputDecoration(
+                                  labelText: 'Password2',
+                                  labelStyle: const TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 15,
+                                  ),
+                                  prefixIcon: Icon(Icons.lock),
+                                  suffixIcon:IconButton(
+                                    onPressed: (){
+                                      setState(() {
+                                        isPassword = !isPassword;
+                                      });
+                                    },
+                                    icon:Icon(
+                                        isPassword?
+                                        Icons.visibility
+                                            :Icons.visibility_off
+                                    ),
+                                  ),
+                                  border: InputBorder.none
+                              ),
                               keyboardType: TextInputType.text,
                               controller: passwordController,
-                              onFieldSubmitted: (value) {},
-                              decoration: InputDecoration(
-                                labelText: 'password',
-                                labelStyle: const TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 15,
-                                ),
-                                border: InputBorder.none,
-                                prefixIcon: const Icon(Icons.lock),
-                                suffix: IconButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      isPassword = !isPassword;
-                                    });
-                                  },
-                                  icon: Icon(
-                                    isPassword
-                                        ? Icons.visibility
-                                        : Icons.visibility_off,
-                                  ),
-                                ),
-                              ),
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return 'pasword is required';
@@ -325,35 +324,34 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                             ),
                             child: TextFormField(
                               obscureText: isPassword,
-                              controller: passwordController2,
-                              keyboardType: TextInputType.text,
-                              onFieldSubmitted: (value) {},
                               decoration: InputDecoration(
-                                labelText: 'password',
-                                labelStyle: const TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 15,
-                                ),
-                                border: InputBorder.none,
-                                prefixIcon: const Icon(Icons.lock),
-                                suffix: IconButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      isPassword = !isPassword;
-                                    });
-                                  },
-                                  icon: Icon(
-                                    isPassword
-                                        ? Icons.visibility
-                                        : Icons.visibility_off,
+                                  labelText: 'Password2',
+                                  labelStyle: const TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 15,
                                   ),
-                                ),
+                                  prefixIcon: Icon(Icons.lock),
+                                  suffixIcon:IconButton(
+                                    onPressed: (){
+                                      setState(() {
+                                        isPassword = !isPassword;
+                                      });
+                                    },
+                                    icon:Icon(
+                                      isPassword?
+                                          Icons.visibility
+                                          :Icons.visibility_off
+                                    ),
+                                  ),
+                                  border: InputBorder.none
                               ),
+                              keyboardType: TextInputType.text,
+                              controller: passwordController2,
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return 'Enter password again';
+                                  return 'pasword is required';
                                 } else if (value != passwordController.text) {
-                                  return 'Passwords do not match';
+                                  return "Passwords do not match";
                                 }
                                 return null;
                               },
