@@ -29,6 +29,8 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
 
   bool isPassword = true;
 
+  //bool isVisible = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -112,7 +114,7 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                                     ),
                                   ],
                                 ),
-                                width: 150,
+                                width: 140,
                                 child: TextFormField(
                                   controller: firstNameController,
                                   keyboardType: TextInputType.name,
@@ -150,7 +152,7 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                                     ),
                                   ],
                                 ),
-                                width: 150,
+                                width: 140,
                                 child: TextFormField(
                                   controller: lastNameController,
                                   keyboardType: TextInputType.name,
@@ -269,18 +271,31 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                               ],
                             ),
                             child: TextFormField(
-                              obscureText: true,
+                              obscureText: isPassword,
                               keyboardType: TextInputType.text,
                               controller: passwordController,
                               onFieldSubmitted: (value) {},
-                              decoration: const InputDecoration(
-                                  labelText: 'password',
-                                  labelStyle: TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 15,
+                              decoration: InputDecoration(
+                                labelText: 'password',
+                                labelStyle: const TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 15,
+                                ),
+                                border: InputBorder.none,
+                                prefixIcon: const Icon(Icons.lock),
+                                suffix: IconButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      isPassword = !isPassword;
+                                    });
+                                  },
+                                  icon: Icon(
+                                    isPassword
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
                                   ),
-                                  border: InputBorder.none,
-                                  prefixIcon: Icon(Icons.lock)),
+                                ),
+                              ),
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return 'pasword is required';
@@ -309,18 +324,31 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                               ],
                             ),
                             child: TextFormField(
-                              obscureText: true,
+                              obscureText: isPassword,
                               controller: passwordController2,
                               keyboardType: TextInputType.text,
                               onFieldSubmitted: (value) {},
-                              decoration: const InputDecoration(
-                                  labelText: 'password',
-                                  labelStyle: TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 15,
+                              decoration: InputDecoration(
+                                labelText: 'password',
+                                labelStyle: const TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 15,
+                                ),
+                                border: InputBorder.none,
+                                prefixIcon: const Icon(Icons.lock),
+                                suffix: IconButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      isPassword = !isPassword;
+                                    });
+                                  },
+                                  icon: Icon(
+                                    isPassword
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
                                   ),
-                                  border: InputBorder.none,
-                                  prefixIcon: Icon(Icons.lock)),
+                                ),
+                              ),
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return 'Enter password again';
