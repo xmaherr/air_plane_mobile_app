@@ -1,6 +1,8 @@
 import 'package:air_plane/layout/login_page_layout.dart';
 import 'package:flutter/material.dart';
 
+import 'package:air_plane/layout/register_screen_layout.dart';
+
 void main() {
   runApp(const MyApp());
 }
