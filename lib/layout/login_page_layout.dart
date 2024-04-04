@@ -115,11 +115,14 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
                           prefixIconColor: Colors.blue,
                           suffex: IconButton(
                             onPressed: () {
-                              isPassword = !isPassword;
-                              setState(() {});
+                              setState(() {
+                                isPassword = !isPassword;
+                              });
                             },
-                            icon: const Icon(
-                              Icons.remove_red_eye,
+                            icon: Icon(
+                              isPassword
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
                             ),
                           ),
                         ),
