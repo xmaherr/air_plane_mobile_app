@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'layout/login_page_layout.dart';
+import 'layout/register_screen_layout.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPageLayout(),
+      home: RegisterScreenLayout(),
     );
   }
 }
