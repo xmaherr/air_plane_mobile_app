@@ -273,26 +273,23 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                             child: TextFormField(
                               obscureText: isPassword,
                               decoration: InputDecoration(
-                                  labelText: 'Password2',
+                                  labelText: 'insert a password',
                                   labelStyle: const TextStyle(
                                     color: Colors.grey,
                                     fontSize: 15,
                                   ),
-                                  prefixIcon: Icon(Icons.lock),
-                                  suffixIcon:IconButton(
-                                    onPressed: (){
+                                  prefixIcon: const Icon(Icons.lock),
+                                  suffixIcon: IconButton(
+                                    onPressed: () {
                                       setState(() {
                                         isPassword = !isPassword;
                                       });
                                     },
-                                    icon:Icon(
-                                        isPassword?
-                                        Icons.visibility
-                                            :Icons.visibility_off
-                                    ),
+                                    icon: Icon(isPassword
+                                        ? Icons.visibility
+                                        : Icons.visibility_off),
                                   ),
-                                  border: InputBorder.none
-                              ),
+                                  border: InputBorder.none),
                               keyboardType: TextInputType.text,
                               controller: passwordController,
                               validator: (value) {
@@ -325,26 +322,23 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                             child: TextFormField(
                               obscureText: isPassword,
                               decoration: InputDecoration(
-                                  labelText: 'Password2',
+                                  labelText: 'confirm your password',
                                   labelStyle: const TextStyle(
                                     color: Colors.grey,
                                     fontSize: 15,
                                   ),
-                                  prefixIcon: Icon(Icons.lock),
-                                  suffixIcon:IconButton(
-                                    onPressed: (){
+                                  prefixIcon: const Icon(Icons.lock),
+                                  suffixIcon: IconButton(
+                                    onPressed: () {
                                       setState(() {
                                         isPassword = !isPassword;
                                       });
                                     },
-                                    icon:Icon(
-                                      isPassword?
-                                          Icons.visibility
-                                          :Icons.visibility_off
-                                    ),
+                                    icon: Icon(isPassword
+                                        ? Icons.visibility
+                                        : Icons.visibility_off),
                                   ),
-                                  border: InputBorder.none
-                              ),
+                                  border: InputBorder.none),
                               keyboardType: TextInputType.text,
                               controller: passwordController2,
                               validator: (value) {
