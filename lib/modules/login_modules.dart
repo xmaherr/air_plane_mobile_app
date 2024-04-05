@@ -19,7 +19,7 @@ class LoginModule extends StatelessWidget {
           key: formKey,
           child: Column(
             children: [
-              defultFormField(
+              defaultFormField(
                 controller: emailController,
                 type: TextInputType.emailAddress,
                 validator: (String? value) {
@@ -36,7 +36,7 @@ class LoginModule extends StatelessWidget {
               const SizedBox(
                 height: 20.0,
               ),
-              defultFormField(
+              defaultFormField(
                 controller: passwordController,
                 type: TextInputType.emailAddress,
                 validator: (String? value) {
@@ -54,7 +54,7 @@ class LoginModule extends StatelessWidget {
               const SizedBox(
                 height: 100,
               ),
-              defultButton(
+              defaultButton(
                 function: () {
                   if (formKey.currentState!.validate()) {
                     // Perform action upon successful validation

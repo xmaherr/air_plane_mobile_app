@@ -48,14 +48,14 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      'Register',
+                      'Login',
                       style: TextStyle(
                         fontSize: 50,
                         color: Colors.white,
                       ),
                     ),
                     Text(
-                      'Welcome to MARO Are Line',
+                      'Welcome to MARO Airlines',
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.white.withOpacity(0.8),
@@ -82,7 +82,7 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
                     key: formKey,
                     child: Column(
                       children: [
-                        defultFormField(
+                        defaultFormField(
                           controller: emailController,
                           type: TextInputType.emailAddress,
                           validator: (String? value) {
@@ -99,7 +99,7 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
                         const SizedBox(
                           width: 20.0,
                         ),
-                        defultFormField(
+                        defaultFormField(
                           controller: passwordController,
                           type: TextInputType.emailAddress,
                           validator: (String? value) {
@@ -126,10 +126,16 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
                             ),
                           ),
                         ),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                        ),
                         const SizedBox(
                           height: 50,
                         ),
-                        defultButton(
+                        defaultButton(
                           function: () {
                             if (formKey.currentState!.validate()) {
                               if (checkLogin(emailController.text,
@@ -147,7 +153,7 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
                                     content:
                                         Text('Incorrect email or password'),
                                     backgroundColor: Colors
-                                        .red, // Optional: Change snackbar color
+                                        .red, // Optional: Change snack-bar color
                                   ),
                                 );
                               }

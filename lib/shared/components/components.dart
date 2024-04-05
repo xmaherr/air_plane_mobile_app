@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 
-Widget defultButton({
+Widget defaultButton({
   double width= double.infinity,
   Color background = Colors.blueAccent,
   required  Function() function,
@@ -26,7 +26,7 @@ Widget defultButton({
   ),
 );
 
-Widget defultFormField({
+Widget defaultFormField({
   required TextEditingController controller,
   required TextInputType type,
   required String? Function(String?)  validator,
