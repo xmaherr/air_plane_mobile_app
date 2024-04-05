@@ -294,7 +294,7 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                               controller: passwordController,
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return 'pasword is required';
+                                  return 'password is required';
                                 } else if (value != passwordController2.text) {
                                   return "Passwords do not match";
                                 }
@@ -343,7 +343,7 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                               controller: passwordController2,
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return 'pasword is required';
+                                  return 'password is required';
                                 } else if (value != passwordController.text) {
                                   return "Passwords do not match";
                                 }
@@ -354,7 +354,7 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                           const SizedBox(
                             height: 30,
                           ),
-                          defultButton(
+                          defaultButton(
                             function: () {
                               if (formKey.currentState!.validate()) {
                                 addUser(User(

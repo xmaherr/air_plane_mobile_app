@@ -82,7 +82,7 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
                     key: formKey,
                     child: Column(
                       children: [
-                        defultFormField(
+                        defaultFormField(
                           controller: emailController,
                           type: TextInputType.emailAddress,
                           validator: (String? value) {
@@ -99,7 +99,7 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
                         const SizedBox(
                           width: 20.0,
                         ),
-                        defultFormField(
+                        defaultFormField(
                           controller: passwordController,
                           type: TextInputType.emailAddress,
                           validator: (String? value) {
@@ -135,7 +135,7 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
                         const SizedBox(
                           height: 50,
                         ),
-                        defultButton(
+                        defaultButton(
                           function: () {
                             if (formKey.currentState!.validate()) {
                               if (checkLogin(emailController.text,
@@ -153,7 +153,7 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
                                     content:
                                         Text('Incorrect email or password'),
                                     backgroundColor: Colors
-                                        .red, // Optional: Change snackbar color
+                                        .red, // Optional: Change snack-bar color
                                   ),
                                 );
                               }
