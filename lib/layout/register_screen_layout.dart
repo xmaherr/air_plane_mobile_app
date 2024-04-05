@@ -100,256 +100,128 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                         children: [
                           Row(
                             children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(15),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey
-                                          .withOpacity(0.5), // Shadow color
-                                      spreadRadius: 2, // Spread radius
-                                      blurRadius: 5, // Blur radius
-                                      offset: const Offset(0, 0), // Offset
-                                    ),
-                                  ],
-                                ),
-                                width: 140,
-                                child: TextFormField(
-                                  controller: firstNameController,
-                                  keyboardType: TextInputType.name,
-                                  onFieldSubmitted: (value) {},
-                                  decoration: const InputDecoration(
-                                      labelText: 'first name',
-                                      labelStyle: TextStyle(
-                                        color: Colors.grey,
-                                        fontSize: 15,
-                                      ),
-                                      border: InputBorder.none,
-                                      prefixIcon: Icon(Icons.person)),
-                                  validator: (value) {
-                                    if (value!.isEmpty) {
-                                      return 'first name is required';
-                                    }
-                                    return null;
-                                  },
-                                ),
+                              defaultFormField(
+                                width: 150,
+                                controller: firstNameController,
+                                textInputType: TextInputType.name,
+                                validator: (value) {
+                                  if (value!.isEmpty) {
+                                    return 'first name is required';
+                                  }
+                                  return null;
+                                },
+                                prefixIcon: const Icon(Icons.person),
+                                label: 'first name',
                               ),
                               const SizedBox(
-                                width: 50.0,
+                                width: 30.0,
                               ),
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(15),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey
-                                          .withOpacity(0.5), // Shadow color
-                                      spreadRadius: 2, // Spread radius
-                                      blurRadius: 5, // Blur radius
-                                      offset: const Offset(0, 0), // Offset
-                                    ),
-                                  ],
-                                ),
-                                width: 140,
-                                child: TextFormField(
-                                  controller: lastNameController,
-                                  keyboardType: TextInputType.name,
-                                  onFieldSubmitted: (value) {},
-                                  decoration: const InputDecoration(
-                                      labelText: 'last name',
-                                      labelStyle: TextStyle(
-                                        color: Colors.grey,
-                                        fontSize: 15,
-                                      ),
-                                      border: InputBorder.none,
-                                      prefixIcon: Icon(Icons.person)),
-                                  validator: (value) {
-                                    if (value!.isEmpty) {
-                                      return 'last name is required';
-                                    }
-                                    return null;
-                                  },
-                                ),
+                              defaultFormField(
+                                width: 150,
+                                controller: lastNameController,
+                                textInputType: TextInputType.name,
+                                validator: (value) {
+                                  if (value!.isEmpty) {
+                                    return 'last name is required';
+                                  }
+                                  return null;
+                                },
+                                prefixIcon: const Icon(Icons.person),
+                                label: 'last name',
                               ),
                             ],
                           ),
                           const SizedBox(
                             height: 30,
                           ),
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(15),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey
-                                      .withOpacity(0.5), // Shadow color
-                                  spreadRadius: 2, // Spread radius
-                                  blurRadius: 5, // Blur radius
-                                  offset: const Offset(0, 0), // Offset
-                                ),
-                              ],
-                            ),
-                            child: TextFormField(
-                              controller: emailController,
-                              keyboardType: TextInputType.emailAddress,
-                              onFieldSubmitted: (value) {},
-                              decoration: const InputDecoration(
-                                  labelText: 'Email Address',
-                                  labelStyle: TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 15,
-                                  ),
-                                  border: InputBorder.none,
-                                  prefixIcon: Icon(Icons.email_outlined)),
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Email Address is required';
-                                } else if (!isEmailAddressValid(value)) {
-                                  return 'this email is used';
-                                }
-                                return null;
-                              },
-                            ),
+                          defaultFormField(
+                            controller: emailController,
+                            textInputType: TextInputType.emailAddress,
+                            validator: (String? value) {
+                              if (value!.isEmpty) {
+                                return "Email Address is required";
+                              }
+                              return null;
+                            },
+                            prefixIcon: const Icon(Icons.email),
+                            label: "Email Address",
                           ),
                           const SizedBox(
                             height: 30,
                           ),
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(15),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey
-                                      .withOpacity(0.5), // Shadow color
-                                  spreadRadius: 2, // Spread radius
-                                  blurRadius: 5, // Blur radius
-                                  offset: const Offset(0, 0), // Offset
-                                ),
-                              ],
-                            ),
-                            child: TextFormField(
-                              controller: phoneNumberController,
-                              keyboardType: TextInputType.phone,
-                              onFieldSubmitted: (value) {},
-                              decoration: const InputDecoration(
-                                  labelText: 'Phone Number',
-                                  labelStyle: TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 15,
-                                  ),
-                                  border: InputBorder.none,
-                                  prefixIcon: Icon(Icons.phone)),
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Phone is required';
-                                } else if (!isPhoneNumberValid(value)) {
-                                  return 'this phone number used';
-                                }
-                                return null;
-                              },
-                            ),
+                          defaultFormField(
+                            controller: phoneNumberController,
+                            textInputType: TextInputType.phone,
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Phone is required';
+                              } else if (!isPhoneNumberValid(value)) {
+                                return 'this phone number used';
+                              }
+                              return null;
+                            },
+                            prefixIcon: const Icon(Icons.phone),
+                            label: 'Phone Number',
                           ),
                           const SizedBox(
                             height: 30,
                           ),
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(15),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey
-                                      .withOpacity(0.5), // Shadow color
-                                  spreadRadius: 2, // Spread radius
-                                  blurRadius: 5, // Blur radius
-                                  offset: const Offset(0, 0), // Offset
-                                ),
-                              ],
-                            ),
-                            child: TextFormField(
-                              obscureText: isPassword,
-                              decoration: InputDecoration(
-                                  labelText: 'insert a password',
-                                  labelStyle: const TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 15,
-                                  ),
-                                  prefixIcon: const Icon(Icons.lock),
-                                  suffixIcon: IconButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        isPassword = !isPassword;
-                                      });
-                                    },
-                                    icon: Icon(isPassword
-                                        ? Icons.visibility
-                                        : Icons.visibility_off),
-                                  ),
-                                  border: InputBorder.none),
-                              keyboardType: TextInputType.text,
-                              controller: passwordController,
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'password is required';
-                                } else if (value != passwordController2.text) {
-                                  return "Passwords do not match";
-                                }
-                                return null;
+                          defaultFormField(
+                            controller: passwordController,
+                            textInputType: TextInputType.text,
+                            validator:  (value) {
+                              if (value!.isEmpty) {
+                                return 'password is required';
+                              } else if (value != passwordController2.text) {
+                                return "Passwords do not match";
+                              }
+                              return null;
+                            },
+                            prefixIcon: const Icon(Icons.lock),
+                            label: "password",
+                            suffixIconButton: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  isPassword = !isPassword;
+                                });
                               },
+                              icon: Icon(
+                                isPassword
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                              ),
                             ),
+                            isPassword: isPassword,
                           ),
                           const SizedBox(
                             height: 30,
                           ),
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(15),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey
-                                      .withOpacity(0.5), // Shadow color
-                                  spreadRadius: 2, // Spread radius
-                                  blurRadius: 5, // Blur radius
-                                  offset: const Offset(0, 0), // Offset
-                                ),
-                              ],
-                            ),
-                            child: TextFormField(
-                              obscureText: isPassword,
-                              decoration: InputDecoration(
-                                  labelText: 'confirm your password',
-                                  labelStyle: const TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 15,
-                                  ),
-                                  prefixIcon: const Icon(Icons.lock),
-                                  suffixIcon: IconButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        isPassword = !isPassword;
-                                      });
-                                    },
-                                    icon: Icon(isPassword
-                                        ? Icons.visibility
-                                        : Icons.visibility_off),
-                                  ),
-                                  border: InputBorder.none),
-                              keyboardType: TextInputType.text,
-                              controller: passwordController2,
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'password is required';
-                                } else if (value != passwordController.text) {
-                                  return "Passwords do not match";
-                                }
-                                return null;
+                          defaultFormField(
+                            controller: passwordController2,
+                            textInputType: TextInputType.text,
+                            validator:  (value) {
+                              if (value!.isEmpty) {
+                                return 'password is required';
+                              } else if (value != passwordController.text) {
+                                return "Passwords do not match";
+                              }
+                              return null;
+                            },
+                            prefixIcon: const Icon(Icons.lock),
+                            label: "confirm password",
+                            suffixIconButton: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  isPassword = !isPassword;
+                                });
                               },
+                              icon: Icon(
+                                isPassword
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                              ),
                             ),
+                            isPassword: isPassword,
                           ),
                           const SizedBox(
                             height: 30,

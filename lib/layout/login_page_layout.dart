@@ -84,36 +84,31 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
                       children: [
                         defaultFormField(
                           controller: emailController,
-                          type: TextInputType.emailAddress,
+                          textInputType: TextInputType.emailAddress,
                           validator: (String? value) {
                             if (value!.isEmpty) {
                               return "Email Address is required";
                             }
                             return null;
                           },
-                          prefix: Icons.email,
+                          prefixIcon: const Icon(Icons.email),
                           label: "Email Address",
-                          outLineBorder: true,
-                          prefixIconColor: Colors.blue,
                         ),
                         const SizedBox(
-                          width: 20.0,
+                          height: 30.0,
                         ),
                         defaultFormField(
                           controller: passwordController,
-                          type: TextInputType.emailAddress,
+                          textInputType: TextInputType.text,
                           validator: (String? value) {
                             if (value!.isEmpty) {
                               return "Password is required";
                             }
                             return null;
                           },
-                          prefix: Icons.lock,
+                          prefixIcon: const Icon(Icons.lock),
                           label: "Password",
-                          outLineBorder: true,
-                          isPassword: isPassword,
-                          prefixIconColor: Colors.blue,
-                          suffex: IconButton(
+                          suffixIconButton: IconButton(
                             onPressed: () {
                               setState(() {
                                 isPassword = !isPassword;
@@ -125,15 +120,10 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
                                   : Icons.visibility_off,
                             ),
                           ),
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(15),
-                          ),
+                          isPassword: isPassword,
                         ),
                         const SizedBox(
-                          height: 50,
+                          height: 40,
                         ),
                         defaultButton(
                           function: () {
