@@ -134,7 +134,7 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) =>
-                                         HomeScreenLayout(),
+                                         const HomeScreenLayout(),
                                   ),
                                 );
                               } else {

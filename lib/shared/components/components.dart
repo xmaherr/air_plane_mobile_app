@@ -10,7 +10,7 @@ Widget defaultButton({
 }) =>
     Container(
       decoration: BoxDecoration(
-        color: Colors.blueAccent,
+        color: background,
         borderRadius: BorderRadius.circular(radius),
       ),
       width: double.infinity,
@@ -36,7 +36,8 @@ Widget defaultFormField({
   Color labelTextColor = Colors.grey,
   Color backGroundColor =Colors.white,// corrected typo in parameter name
   double fontSize = 15,
-  void Function(String)? onSubmitted, // corrected return type
+  void Function(String)? onSubmitted,
+  void Function()? onTap,// corrected return type
   Icon? prefixIcon,
 }) =>
     Container(
@@ -54,6 +55,7 @@ Widget defaultFormField({
       ),
       width: width,
       child: TextFormField(
+        onTap: onTap,
         obscureText: isPassword,
         controller: controller,
         keyboardType: textInputType,
