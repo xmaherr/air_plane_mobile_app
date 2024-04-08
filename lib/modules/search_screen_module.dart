@@ -1,4 +1,3 @@
-
 import 'dart:math';
 
 import 'package:air_plane/modules/search_result_screen.dart';
@@ -8,7 +7,7 @@ import 'package:intl/intl.dart';
 import '../shared/components/components.dart';
 
 class SearchScreenModule extends StatefulWidget {
-   const SearchScreenModule({super.key});
+  const SearchScreenModule({super.key});
 
   @override
   State<SearchScreenModule> createState() => _SearchScreenModuleState();
@@ -23,11 +22,11 @@ class _SearchScreenModuleState extends State<SearchScreenModule> {
 
   var returnController = TextEditingController();
 
-  final List<String> _items = ['Business class', 'economy','ZZZ'];
+  final List<String> _items = ['Business class', 'economy', 'ZZZ'];
 
   late FocusNode _focusNode;
 
-  bool isFocused =false;
+  bool isFocused = false;
 
   @override
   void initState() {
@@ -35,18 +34,21 @@ class _SearchScreenModuleState extends State<SearchScreenModule> {
     _focusNode = FocusNode();
     _focusNode.addListener(_onFocusChange);
     departureController.text = DateFormat.yMMMd().format(DateTime.now());
-    returnController.text = DateFormat.yMMMd().format(DateTime.now().add(const Duration(days: 2)));
+    returnController.text =
+        DateFormat.yMMMd().format(DateTime.now().add(const Duration(days: 2)));
   }
 
   void _onFocusChange() {
     setState(() {
       isFocused = _focusNode.hasFocus;
-    });// You can add additional logic here based on focus change
+    }); // You can add additional logic here based on focus change
   }
 
   @override
   Widget build(BuildContext context) {
-    double theHight=!isFocused?(MediaQuery.of(context).size.height / 2) - 30:(MediaQuery.of(context).size.height / 2) -150;
+    double theHight = !isFocused
+        ? (MediaQuery.of(context).size.height / 2) - 30
+        : (MediaQuery.of(context).size.height / 2) - 150;
     return Stack(
       children: [
         Positioned(
@@ -99,7 +101,7 @@ class _SearchScreenModuleState extends State<SearchScreenModule> {
                           child: Column(
                             children: List.generate(
                               10, // Number of dots you want
-                                  (index) => Container(
+                              (index) => Container(
                                 margin: const EdgeInsets.only(bottom: 3),
                                 width: 2,
                                 height: 2,
@@ -135,7 +137,9 @@ class _SearchScreenModuleState extends State<SearchScreenModule> {
                           child: Focus(
                             focusNode: _focusNode,
                             child: TextFormField(
-                              onChanged: (value){isFocused=!isFocused;},
+                              onChanged: (value) {
+                                isFocused = !isFocused;
+                              },
                               cursorColor: Colors.white,
                               keyboardType: TextInputType.text,
                               decoration: InputDecoration(
@@ -213,8 +217,7 @@ class _SearchScreenModuleState extends State<SearchScreenModule> {
               color: Colors.white,
             ),
             child: Padding(
-              padding:
-              const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: Column(
                 children: [
                   Container(
@@ -354,7 +357,7 @@ class _SearchScreenModuleState extends State<SearchScreenModule> {
                           ),
                         ),
                         const SizedBox(
-                          width:30,
+                          width: 30,
                         ),
                         SizedBox(
                           width: 130,
@@ -417,15 +420,20 @@ class _SearchScreenModuleState extends State<SearchScreenModule> {
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          borderSide: const BorderSide(color: Colors.grey), // Customize border color
+                          borderSide: const BorderSide(
+                              color: Colors.grey), // Customize border color
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          borderSide: const BorderSide(color: Colors.grey), // Customize enabled border color
+                          borderSide: const BorderSide(
+                              color: Colors
+                                  .grey), // Customize enabled border color
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          borderSide: const BorderSide(color: Colors.grey), // Customize focused border color
+                          borderSide: const BorderSide(
+                              color: Colors
+                                  .grey), // Customize focused border color
                         ),
                       ),
                     ),
@@ -433,19 +441,17 @@ class _SearchScreenModuleState extends State<SearchScreenModule> {
                   Padding(
                     padding: const EdgeInsets.only(top: 20),
                     child: defaultButton(
-                        function: (){
+                        function: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) =>
-                              const SearchResultScreen(),
+                              builder: (context) => const SearchResultScreen(),
                             ),
                           );
                         },
                         text: 'search',
                         background: const Color(0xFFFF8B3D),
-                        radius: 10
-                    ),
+                        radius: 10),
                   )
                 ],
               ),
