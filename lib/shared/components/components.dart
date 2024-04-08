@@ -75,7 +75,7 @@ Widget defaultFormField({
 Widget ticketBuilder() => Stack(
       children: [
         Container(
-          width: 354,
+          width: 355,
           height: 180,
           decoration: BoxDecoration(
               color: Colors.white, borderRadius: BorderRadius.circular(15)),
