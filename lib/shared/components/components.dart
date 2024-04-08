@@ -74,3 +74,184 @@ Widget defaultFormField({
         validator: validator,
       ),
     );
+
+Widget ticketBuilder()=>Stack(
+  children: [
+    Container(
+      width: 335,
+      height: 180,
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(15)
+      ),
+      child:   Row(
+        children: [
+          const Padding(
+            padding: EdgeInsets.only(
+              top: 30,
+              left: 30
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Egypt Air',
+                  style:TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 17,
+                  ),
+                ),
+                SizedBox(height: 25,),
+                Text(
+                  'Depart',
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 13
+                  ),
+                ),
+                Text(
+                    '12:30AM',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 17
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(
+              top:10
+            ),
+            child: Column(
+              children: [
+                const Image(
+                  image: AssetImage('lib/images/egAirline.png'),
+                  height: 60,
+                  width: 80,
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                SizedBox(
+                  height: 20,
+                  width: 130,
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        top: 10,
+                        child: Container(
+                          height: 1,
+                          width: 130,
+                          decoration: const BoxDecoration(
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        left: 32.5,
+                        child: Container(
+                          height: 20,
+                          width: 60,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(
+                              width: 1,
+                              color: Colors.grey,
+                            ),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: const Center(
+                            child: Text(
+                              '1H,30M',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.grey
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                TextButton(
+                    onPressed: (){},
+                    child: Text(
+                      'Book Now',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blue[300]
+                      ),
+                    )
+                )
+              ],
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.only(
+                top: 30,
+                right: 30,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  '\$200',
+                  style:TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 17,
+                  ),
+                ),
+                SizedBox(height: 25,),
+                Text(
+                  'Return',
+                  style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 13
+                  ),
+                ),
+                Text(
+                  '02:00PM',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 17
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    ),
+    Positioned(
+        left: 325,
+        top: 80,
+        child: Container(
+          width: 10,
+          height: 20,
+          decoration: const BoxDecoration(
+            color: Color(0xFFD9D7D7),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(15),
+              bottomLeft: Radius.circular(15)
+            )
+          ),
+        ),
+    ),
+    Positioned(
+      top: 80,
+      child: Container(
+        width: 10,
+        height: 20,
+        decoration: const BoxDecoration(
+            color: Color(0xFFD9D7D7),
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(15),
+                bottomRight: Radius.circular(15)
+            )
+        ),
+      ),
+    ),
+  ],
+);
