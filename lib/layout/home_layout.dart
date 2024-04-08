@@ -18,7 +18,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
   String selectedClass = 'economy';
   TextEditingController departureController = TextEditingController();
   var returnController = TextEditingController();
-  final List<String> _items = ['Business class', 'economy','ZZZ'];
+  final List<String> _items = ['Business', 'economy'];
   late FocusNode _focusNode;
   bool isFocused =false;
 
