@@ -18,9 +18,9 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
   String selectedClass = 'economy';
   TextEditingController departureController = TextEditingController();
   var returnController = TextEditingController();
-  final List<String> _items = ['Business class', 'economy', 'ZZZ'];
+  final List<String> _items = ['Business class', 'economy','ZZZ'];
   late FocusNode _focusNode;
-  bool isFocused = false;
+  bool isFocused =false;
 
   @override
   void initState() {
@@ -28,21 +28,18 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
     _focusNode = FocusNode();
     _focusNode.addListener(_onFocusChange);
     departureController.text = DateFormat.yMMMd().format(DateTime.now());
-    returnController.text =
-        DateFormat.yMMMd().format(DateTime.now().add(const Duration(days: 2)));
+    returnController.text = DateFormat.yMMMd().format(DateTime.now().add(const Duration(days: 2)));
   }
 
   void _onFocusChange() {
     setState(() {
       isFocused = _focusNode.hasFocus;
-    }); // You can add additional logic here based on focus change
+    });// You can add additional logic here based on focus change
   }
 
   @override
   Widget build(BuildContext context) {
-    double theHight = !isFocused
-        ? (MediaQuery.of(context).size.height / 2) - 30
-        : (MediaQuery.of(context).size.height / 2) - 150;
+    double theHight=!isFocused?(MediaQuery.of(context).size.height / 2) - 30:(MediaQuery.of(context).size.height / 2) -150;
     return Scaffold(
       body: Stack(
         children: [
@@ -132,9 +129,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                             child: Focus(
                               focusNode: _focusNode,
                               child: TextFormField(
-                                onChanged: (value) {
-                                  isFocused = !isFocused;
-                                },
+                                onChanged: (value){isFocused=!isFocused;},
                                 cursorColor: Colors.white,
                                 keyboardType: TextInputType.text,
                                 decoration: InputDecoration(
@@ -142,8 +137,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                                     borderSide: BorderSide(color: Colors.white),
                                   ),
                                   focusedBorder: const UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.white54),
+                                    borderSide: BorderSide(color: Colors.white54),
                                   ),
                                   labelText: 'From',
                                   labelStyle: TextStyle(
@@ -168,8 +162,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                                     borderSide: BorderSide(color: Colors.white),
                                   ),
                                   focusedBorder: const UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.white54),
+                                    borderSide: BorderSide(color: Colors.white54),
                                   ),
                                   labelText: 'To',
                                   labelStyle: TextStyle(
@@ -215,7 +208,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
               ),
               child: Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
                 child: Column(
                   children: [
                     Container(
@@ -355,7 +348,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                             ),
                           ),
                           const SizedBox(
-                            width: 30,
+                            width:30,
                           ),
                           SizedBox(
                             width: 130,
@@ -418,20 +411,15 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                           ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
-                            borderSide: const BorderSide(
-                                color: Colors.grey), // Customize border color
+                            borderSide: const BorderSide(color: Colors.grey), // Customize border color
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
-                            borderSide: const BorderSide(
-                                color: Colors
-                                    .grey), // Customize enabled border color
+                            borderSide: const BorderSide(color: Colors.grey), // Customize enabled border color
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
-                            borderSide: const BorderSide(
-                                color: Colors
-                                    .grey), // Customize focused border color
+                            borderSide: const BorderSide(color: Colors.grey), // Customize focused border color
                           ),
                         ),
                       ),
@@ -439,10 +427,11 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                     Padding(
                       padding: const EdgeInsets.only(top: 20),
                       child: defaultButton(
-                          function: () {},
+                          function: (){},
                           text: 'search',
-                          background: const Color(0xFFFF8B3D),
-                          radius: 10),
+                        background: const Color(0xFFFF8B3D),
+                        radius: 10
+                      ),
                     )
                   ],
                 ),
@@ -491,7 +480,6 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
       ),
     );
   }
-
   double calculatePadding(double screenWidth) {
     return 0.0509 * screenWidth;
   }
