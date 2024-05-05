@@ -1,5 +1,7 @@
 import 'package:air_plane/DB/db.dart';
 import 'package:air_plane/layout/login_page_layout.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../models/user.dart';
@@ -14,22 +16,13 @@ class RegisterScreenLayout extends StatefulWidget {
 
 class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
   var emailController = TextEditingController();
-
   var passwordController = TextEditingController();
-
   var passwordController2 = TextEditingController();
-
   var phoneNumberController = TextEditingController();
-
   var firstNameController = TextEditingController();
-
   var lastNameController = TextEditingController();
-
   var formKey = GlobalKey<FormState>();
-
   bool isPassword = true;
-
-  //bool isVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -57,20 +50,22 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                 const SizedBox(
                   height: 50,
                 ),
+
+                // the welcome upper text
                 Padding(
                   padding: const EdgeInsets.all(21.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
-                        'Register',
+                        'Sign Up',
                         style: TextStyle(
                           fontSize: 50,
                           color: Colors.white,
                         ),
                       ),
                       Text(
-                        'Register now at MARO Airlines',
+                        'Join now on Volami community',
                         style: TextStyle(
                           fontSize: 20,
                           color: Colors.white.withOpacity(0.8),
@@ -82,6 +77,8 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                 const SizedBox(
                   height: 20,
                 ),
+
+                // it has all the registration form
                 Container(
                   decoration: const BoxDecoration(
                     color: Colors.white,
@@ -94,6 +91,8 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                   child: Padding(
                     padding:
                         const EdgeInsets.only(top: 60, left: 30, right: 30),
+
+                    // the registration form
                     child: Form(
                       key: formKey,
                       child: Column(
@@ -169,7 +168,7 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                           defaultFormField(
                             controller: passwordController,
                             textInputType: TextInputType.text,
-                            validator:  (value) {
+                            validator: (value) {
                               if (value!.isEmpty) {
                                 return 'password is required';
                               } else if (value != passwordController2.text) {
@@ -199,7 +198,7 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                           defaultFormField(
                             controller: passwordController2,
                             textInputType: TextInputType.text,
-                            validator:  (value) {
+                            validator: (value) {
                               if (value!.isEmpty) {
                                 return 'password is required';
                               } else if (value != passwordController.text) {
@@ -227,28 +226,36 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                             height: 30,
                           ),
                           defaultButton(
-                            function: () {
-                              if (formKey.currentState!.validate()) {
-                                addUser(User(
-                                  firstNameController.text,
-                                  lastNameController.text,
-                                  emailController.text,
-                                  phoneNumberController.text,
-                                  passwordController.text,
-                                ));
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        const LoginScreenLayout(),
-                                  ),
+                            function: () async {
+                              try {
+                                final credential = await FirebaseAuth.instance
+                                    .createUserWithEmailAndPassword(
+                                  email: emailController.text,
+                                  password: passwordController.text,
                                 );
+                              } on FirebaseAuthException catch (e) {
+                                if (e.code == 'weak-password') {
+                                  if (kDebugMode) {
+                                    print('The password provided is too weak.');
+                                  }
+                                } else if (e.code == 'email-already-in-use') {
+                                  if (kDebugMode) {
+                                    print(
+                                        'The account already exists for that email.');
+                                  }
+                                }
+                              } catch (e) {
+                                if (kDebugMode) {
+                                  print(e);
+                                }
                               }
                             },
                             text: 'Register',
                             radius: 15,
                             textSize: 20,
                           ),
+
+                          //
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [

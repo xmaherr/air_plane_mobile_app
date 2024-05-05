@@ -48,14 +48,14 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      'Login',
+                      'Sign In',
                       style: TextStyle(
                         fontSize: 50,
                         color: Colors.white,
                       ),
                     ),
                     Text(
-                      'Welcome to Volami ',
+                      'Welcome to Volami... ',
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.white.withOpacity(0.8),
