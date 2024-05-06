@@ -1,5 +1,9 @@
+import 'dart:js';
+
 import 'package:air_plane/firebase_options.dart';
+import 'package:air_plane/layout/home_layout.dart';
 import 'package:air_plane/layout/login_page_layout.dart';
+import 'package:air_plane/layout/register_screen_layout.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
@@ -41,9 +45,14 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginScreenLayout(),
+      home: const LoginScreenLayout(),
+      routes: {
+        'homePage': (context) => const HomeScreenLayout(),
+        'signUp': (context) => const RegisterScreenLayout(),
+        'login': (context) => const LoginScreenLayout(),
+      },
     );
   }
 }

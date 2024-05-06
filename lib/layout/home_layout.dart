@@ -1,4 +1,6 @@
 import 'dart:math';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -40,10 +42,31 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
 
   @override
   Widget build(BuildContext context) {
-    double theHight = !isFocused
+    double theHeight = !isFocused
         ? (MediaQuery.of(context).size.height / 2) - 30
         : (MediaQuery.of(context).size.height / 2) - 150;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(0xFFEEEEEE),
+        title: const Text(
+          'Home Page',
+          style: TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: 30,
+          ),
+        ),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () async {
+              await FirebaseAuth.instance.signOut();
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil('login', (route) => false);
+            },
+            icon: const Icon(Icons.logout),
+          ),
+        ],
+      ),
       body: Stack(
         children: [
           Positioned(
@@ -193,7 +216,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
             left: 0,
             right: 0,
             child: Container(
-              height: theHight,
+              height: theHeight,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(25),

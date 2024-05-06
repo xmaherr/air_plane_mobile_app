@@ -233,6 +233,14 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                                   email: emailController.text,
                                   password: passwordController.text,
                                 );
+
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const LoginScreenLayout(),
+                                  ),
+                                );
                               } on FirebaseAuthException catch (e) {
                                 if (e.code == 'weak-password') {
                                   if (kDebugMode) {
