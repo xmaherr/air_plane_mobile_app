@@ -1,8 +1,5 @@
-import 'package:air_plane/layout/home_layout.dart';
 import 'package:flutter/material.dart';
-import '../DB/db.dart';
 import '../shared/components/components.dart';
-import 'register_screen_layout.dart'; // Import the register screen file
 
 class LoginScreenLayout extends StatefulWidget {
   const LoginScreenLayout({super.key});
@@ -127,7 +124,7 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
                         ),
                         defaultButton(
                           function: () {
-                            if (formKey.currentState!.validate()) {
+                            /*if (formKey.currentState!.validate()) {
                               if (checkLogin(emailController.text,
                                   passwordController.text)) {
                                 Navigator.push(
@@ -147,7 +144,9 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
                                   ),
                                 );
                               }
-                            }
+                            }*/
+                            Navigator.of(context)
+                                .pushReplacementNamed("/homePage");
                           },
                           text: 'LOGIN',
                           radius: 15,
@@ -160,13 +159,8 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
                             TextButton(
                               onPressed: () {
                                 // Navigate to the register screen
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        const RegisterScreenLayout(),
-                                  ),
-                                );
+                                Navigator.of(context)
+                                    .pushReplacementNamed("/signUp");
                               },
                               child: const Text(
                                 'Register Now',

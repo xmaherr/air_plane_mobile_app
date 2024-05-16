@@ -47,9 +47,9 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home: const LoginScreenLayout(),
       routes: {
-        'homePage': (context) => const HomeScreenLayout(),
-        'signUp': (context) => const RegisterScreenLayout(),
-        'login': (context) => const LoginScreenLayout(),
+        '/homePage': (context) => const HomeScreenLayout(),
+        '/signUp': (context) => const RegisterScreenLayout(),
+        '/login': (context) => const LoginScreenLayout(),
       },
     );
   }

@@ -4,7 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../models/user.dart';
 import '../shared/components/components.dart';
 
 class RegisterScreenLayout extends StatefulWidget {
@@ -234,13 +233,8 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                                   password: passwordController.text,
                                 );
 
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        const LoginScreenLayout(),
-                                  ),
-                                );
+                                Navigator.of(context)
+                                    .pushReplacementNamed("/homepage");
                               } on FirebaseAuthException catch (e) {
                                 if (e.code == 'weak-password') {
                                   if (kDebugMode) {
