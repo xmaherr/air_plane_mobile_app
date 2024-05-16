@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:air_plane/firebase_options.dart';
 import 'package:air_plane/layout/home_layout.dart';
 import 'package:air_plane/layout/login_page_layout.dart';
