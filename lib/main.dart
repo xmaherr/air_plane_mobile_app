@@ -12,7 +12,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
+  FirebaseAuth.instance.setLanguageCode('en');
   runApp(const MyApp());
 }
 
@@ -45,7 +45,9 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const LoginScreenLayout(),
+      home: FirebaseAuth.instance.currentUser == null
+          ? const LoginScreenLayout()
+          : const HomeScreenLayout(),
       routes: {
         '/homePage': (context) => const HomeScreenLayout(),
         '/signUp': (context) => const RegisterScreenLayout(),

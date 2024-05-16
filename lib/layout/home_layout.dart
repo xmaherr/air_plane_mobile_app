@@ -1,6 +1,5 @@
 import 'dart:math';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -61,7 +60,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
             onPressed: () async {
               await FirebaseAuth.instance.signOut();
               Navigator.of(context)
-                  .pushNamedAndRemoveUntil('login', (route) => false);
+                  .pushNamedAndRemoveUntil('/login', (route) => false);
             },
             icon: const Icon(Icons.logout),
           ),

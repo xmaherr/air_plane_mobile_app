@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../shared/components/components.dart';
 
@@ -123,30 +124,22 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
                           height: 40,
                         ),
                         defaultButton(
-                          function: () {
-                            /*if (formKey.currentState!.validate()) {
-                              if (checkLogin(emailController.text,
-                                  passwordController.text)) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        const HomeScreenLayout(),
-                                  ),
-                                );
-                              } else {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    content:
-                                        Text('Incorrect email or password'),
-                                    backgroundColor: Colors
-                                        .red, // Optional: Change snack-bar color
-                                  ),
-                                );
+                          function: () async {
+                            try {
+                              final credential = await FirebaseAuth.instance
+                                  .signInWithEmailAndPassword(
+                                email: emailController.text,
+                                password: passwordController.text,
+                              );
+                              Navigator.of(context)
+                                  .pushReplacementNamed('/homePage');
+                            } on FirebaseAuthException catch (e) {
+                              if (e.code == 'user-not-found') {
+                                print('No user found for that email.');
+                              } else if (e.code == 'wrong-password') {
+                                print('Wrong password provided for that user.');
                               }
-                            }*/
-                            Navigator.of(context)
-                                .pushReplacementNamed("/homePage");
+                            }
                           },
                           text: 'LOGIN',
                           radius: 15,
