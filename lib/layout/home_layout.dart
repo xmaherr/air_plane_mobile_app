@@ -13,29 +13,18 @@ class HomeScreenLayout extends StatefulWidget {
 }
 
 class _HomeScreenLayoutState extends State<HomeScreenLayout> {
-  var passwordController = TextEditingController();
   int selectedItem = 1;
   String selectedClass = 'economy';
   TextEditingController departureController = TextEditingController();
   var returnController = TextEditingController();
-  final List<String> _items = ['Business class', 'economy', 'ZZZ'];
-  late FocusNode _focusNode;
-  bool isFocused = false;
+  final List<String> _items = ['Business class', 'economy'];
 
   @override
   void initState() {
     super.initState();
-    _focusNode = FocusNode();
-    _focusNode.addListener(_onFocusChange);
     departureController.text = DateFormat.yMMMd().format(DateTime.now());
     returnController.text =
         DateFormat.yMMMd().format(DateTime.now().add(const Duration(days: 2)));
-  }
-
-  void _onFocusChange() {
-    setState(() {
-      isFocused = _focusNode.hasFocus;
-    }); // You can add additional logic here based on focus change
   }
 
   @override
@@ -126,12 +115,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                         children: [
                           SizedBox(
                             width: 200,
-                            child: Focus(
-                              focusNode: _focusNode,
-                              child: TextFormField(
-                                onChanged: (value) {
-                                  isFocused = !isFocused;
-                                },
+                            child: TextFormField(
                                 cursorColor: Colors.white,
                                 keyboardType: TextInputType.text,
                                 decoration: InputDecoration(
@@ -149,15 +133,12 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                                   ),
                                 ),
                               ),
-                            ),
                           ),
                           const SizedBox(height: 30),
                           Container(
                             width: 200,
                             padding: const EdgeInsets.only(bottom: 30),
-                            child: Focus(
-                              focusNode: _focusNode,
-                              child: TextFormField(
+                            child: TextFormField(
                                 cursorColor: Colors.white,
                                 keyboardType: TextInputType.text,
                                 decoration: InputDecoration(
@@ -175,7 +156,6 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                                   ),
                                 ),
                               ),
-                            ),
                           ),
                         ],
                       ),
