@@ -3,6 +3,7 @@ import 'package:air_plane/shared/cubit/app_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../modules/hame_screen_module.dart';
 import '../shared/components/components.dart';
 import '../shared/cubit/search_screen_cubit.dart';
 
@@ -32,6 +33,18 @@ class HomeScreenLayout extends StatelessWidget {
         iconSize: 35,
         selectedFontSize: 0,
         unselectedFontSize: 0,
+        onTap: (value)
+        {
+          print(value);
+          if(value == 0)
+            {
+              cubit.changeScreenIndex(index: 1);
+            }
+          else if (value == 1)
+            {
+              cubit.changeScreenIndex(index: 0);
+            }
+        },
         items: const [
           BottomNavigationBarItem(
             icon: Icon(
@@ -39,17 +52,11 @@ class HomeScreenLayout extends StatelessWidget {
               color: Colors.white,
             ),
             label: '',
+
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.search,
-              color: Colors.white,
-            ),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.mail_outline,
               color: Colors.white,
             ),
             label: '',

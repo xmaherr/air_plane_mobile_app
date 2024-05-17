@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:meta/meta.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../modules/hame_screen_module.dart';
 import '../../modules/search_screen_module.dart';
 
 part 'app_state.dart';
@@ -12,6 +13,7 @@ class AppCubit extends Cubit<AppState> {
   int screenIndex = 0;
   List<Widget> currentScreen =[
     SearchScreenModule(),
+    HomeScreenModule(),
   ];
 
   static AppCubit get(context) => BlocProvider.of(context);
