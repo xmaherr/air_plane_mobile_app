@@ -358,7 +358,9 @@ class SearchScreenModule extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(top: 20),
                           child: defaultButton(
-                              function: () {},
+                              function: () {
+                                Navigator.pushNamed(context, '/search_result');
+                              },
                               text: 'searchh',
                               background: const Color(0xFFFF8B3D),
                               radius: 10),
