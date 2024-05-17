@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../shared/components/components.dart';
 
-class EditProfileScreen extends StatefulWidget {
+class EditProfileScreen extends StatefulWidget{
   const EditProfileScreen({Key? key}) : super(key: key);
 
   @override
