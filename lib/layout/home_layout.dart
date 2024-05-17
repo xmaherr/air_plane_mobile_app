@@ -1,12 +1,12 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'edit_page.dart'; // Importing edit_page.dart
 
 import '../shared/components/components.dart';
 
-// ignore: must_be_immutable
 class HomeScreenLayout extends StatefulWidget {
-  const HomeScreenLayout({super.key});
+  const HomeScreenLayout({Key? key}) : super(key: key);
 
   @override
   State<HomeScreenLayout> createState() => _HomeScreenLayoutState();
@@ -35,7 +35,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
   void _onFocusChange() {
     setState(() {
       isFocused = _focusNode.hasFocus;
-    }); // You can add additional logic here based on focus change
+    });
   }
 
   @override
@@ -488,6 +488,14 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
             label: '',
           ),
         ],
+        onTap: (index) {
+          if (index == 3) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => EditProfileScreen()),
+            );
+          }
+        },
       ),
     );
   }
@@ -496,3 +504,4 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
     return 0.0509 * screenWidth;
   }
 }
+
