@@ -22,7 +22,8 @@ import 'package:flutter/material.dart';
 *
 * */
 void main() {
-  runApp(const MyApp());
+  ru
+  nApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
