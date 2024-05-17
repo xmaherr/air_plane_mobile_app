@@ -389,14 +389,6 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20),
-                      child: defaultButton(
-                          function: () {},
-                          text: 'search',
-                          background: const Color(0xFFFF8B3D),
-                          radius: 10),
-                    )
                   ],
                 ),
               ),

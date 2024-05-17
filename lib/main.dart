@@ -1,26 +1,6 @@
 import 'package:air_plane/layout/login_page_layout.dart';
 import 'package:flutter/material.dart';
 
-/*
-*
-*
-*
-* you can login and register
-*
-* use
-*   mail: maher@gmail.com
-*   password: 123
-* to login and see search screen
-*
-*
-*
-*
-*
-*
-*
-*
-*
-* */
 void main() {
   runApp(const MyApp());
 }
