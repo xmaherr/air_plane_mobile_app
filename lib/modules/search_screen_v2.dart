@@ -2,8 +2,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../shared/components/components.dart';
-
 // ignore: must_be_immutable
 class HomeScreenLayout extends StatefulWidget {
   const HomeScreenLayout({super.key});
@@ -93,7 +91,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                             child: Column(
                               children: List.generate(
                                 10, // Number of dots you want
-                                (index) => Container(
+                                    (index) => Container(
                                   margin: const EdgeInsets.only(bottom: 3),
                                   width: 2,
                                   height: 2,
@@ -140,7 +138,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                                   ),
                                   focusedBorder: const UnderlineInputBorder(
                                     borderSide:
-                                        BorderSide(color: Colors.white54),
+                                    BorderSide(color: Colors.white54),
                                   ),
                                   labelText: 'From',
                                   labelStyle: TextStyle(
@@ -166,7 +164,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                                   ),
                                   focusedBorder: const UnderlineInputBorder(
                                     borderSide:
-                                        BorderSide(color: Colors.white54),
+                                    BorderSide(color: Colors.white54),
                                   ),
                                   labelText: 'To',
                                   labelStyle: TextStyle(
@@ -197,7 +195,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
               ),
               child: Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 child: Column(
                   children: [
                     Container(
@@ -267,7 +265,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                           ),
                         ],
                       ),
-                    ),//(Round trip / one way)
+                    ),
                     Padding(
                       padding: const EdgeInsets.only(top: 20),
                       child: Row(
@@ -352,7 +350,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                           ),
                         ],
                       ),
-                    ), //(the date of departure and return)
+                    ),
                     Padding(
                       padding: const EdgeInsets.only(top: 20.0),
                       child: DropdownButtonFormField<String>(
@@ -381,26 +379,24 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
                             borderSide: const BorderSide(
-                                color: Colors
-                                    .grey), // Customize enabled border color
+                                color: Colors.grey), // Customize enabled border color
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
                             borderSide: const BorderSide(
-                                color: Colors
-                                    .grey), // Customize focused border color
+                                color: Colors.grey), // Customize focused border color
                           ),
                         ),
                       ),
-                    ),// the class
+                    ),
                     Padding(
                       padding: const EdgeInsets.only(top: 20),
                       child: defaultButton(
                           function: () {},
-                          text: 'searchh',
+                          text: 'search',
                           background: const Color(0xFFFF8B3D),
                           radius: 10),
-                    )// the search button
+                    )
                   ],
                 ),
               ),
@@ -447,5 +443,9 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
         ],
       ),
     );
+  }
+
+  double calculatePadding(double screenWidth) {
+    return 0.0509 * screenWidth;
   }
 }
