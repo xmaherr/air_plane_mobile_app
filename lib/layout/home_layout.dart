@@ -1,12 +1,11 @@
 import 'dart:math';
+import 'package:air_plane/shared/components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'edit_page.dart'; // Importing edit_page.dart
-
-import '../shared/components/components.dart';
+import 'edit_page.dart';
 
 class HomeScreenLayout extends StatefulWidget {
-  const HomeScreenLayout({Key? key}) : super(key: key);
+  const HomeScreenLayout({super.key});
 
   @override
   State<HomeScreenLayout> createState() => _HomeScreenLayoutState();
@@ -14,10 +13,12 @@ class HomeScreenLayout extends StatefulWidget {
 
 class _HomeScreenLayoutState extends State<HomeScreenLayout> {
   var passwordController = TextEditingController();
+  var departureController = TextEditingController();
+  var returnController = TextEditingController();
+
   int selectedItem = 1;
   String selectedClass = 'economy';
-  TextEditingController departureController = TextEditingController();
-  var returnController = TextEditingController();
+
   final List<String> _items = ['Business class', 'economy', 'ZZZ'];
   late FocusNode _focusNode;
   bool isFocused = false;
@@ -35,15 +36,18 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
   void _onFocusChange() {
     setState(() {
       isFocused = _focusNode.hasFocus;
-    });
+    }); // You can add additional logic here based on focus change
   }
 
   @override
   Widget build(BuildContext context) {
-    double theHight = !isFocused
-        ? (MediaQuery.of(context).size.height / 2) - 30
-        : (MediaQuery.of(context).size.height / 2) - 150;
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+
+    double theHight =
+        !isFocused ? (screenHeight / 2) - 30 : (screenHeight / 2) - 150;
     return Scaffold(
+      backgroundColor: const Color(0xFF161E36),
       body: Stack(
         children: [
           Positioned(
@@ -57,12 +61,13 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                 right: 30,
                 bottom: 120,
               ),
-              color: const Color(0xFF161E36),
               width: double.infinity,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(height: 40.0),
+                  // title
                   const Text(
                     'Search Flight',
                     style: TextStyle(
@@ -77,6 +82,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
+                          // plane icon 'from'
                           Padding(
                             padding: const EdgeInsets.only(top: 0, bottom: 0),
                             child: CircleAvatar(
@@ -91,6 +97,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                               ),
                             ),
                           ),
+                          // dots line
                           Padding(
                             padding: const EdgeInsets.only(top: 5, bottom: 5),
                             child: Column(
@@ -108,6 +115,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                               ),
                             ),
                           ),
+                          // plane icon 'to'
                           Padding(
                             padding: const EdgeInsets.only(top: 0),
                             child: CircleAvatar(
@@ -126,9 +134,11 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                       ),
                       const SizedBox(width: 20),
                       Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
+                          // textfield 'from'
                           SizedBox(
-                            width: 200,
+                            width: screenWidth - 200,
                             child: Focus(
                               focusNode: _focusNode,
                               child: TextFormField(
@@ -155,8 +165,9 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                             ),
                           ),
                           const SizedBox(height: 30),
+                          // textfield 'to'
                           Container(
-                            width: 200,
+                            width: screenWidth - 200,
                             padding: const EdgeInsets.only(bottom: 30),
                             child: Focus(
                               focusNode: _focusNode,
@@ -188,6 +199,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
               ),
             ),
           ),
+          // bottom container
           Positioned(
             bottom: 0,
             left: 0,
@@ -203,20 +215,24 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
               ),
             ),
           ),
+          // white container
           Positioned(
-            top: (MediaQuery.of(context).size.height / 2) - 100,
+            top: (screenHeight / 2) - 100,
             left: 30,
             right: 30,
             child: Container(
-              height: (MediaQuery.of(context).size.height / 2) - 70,
+              height: (screenHeight / 2) - 70,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(25),
                 color: Colors.white,
               ),
               child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 20,
+                ),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
                       padding: const EdgeInsets.all(8.0),
@@ -227,6 +243,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                       height: 60,
                       child: Row(
                         children: [
+                          // Round Trip Button
                           Expanded(
                             child: GestureDetector(
                               child: Container(
@@ -255,6 +272,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                               },
                             ),
                           ),
+                          // One Way Button
                           Expanded(
                             child: GestureDetector(
                               child: Container(
@@ -283,6 +301,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                               },
                             ),
                           ),
+                          // Multi City Button
                           Expanded(
                             child: GestureDetector(
                               child: Container(
@@ -317,85 +336,91 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                     Padding(
                       padding: const EdgeInsets.only(top: 20),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(
-                            width: 130,
-                            height: 50,
-                            child: TextFormField(
-                              readOnly: true,
-                              onTap: () {
-                                showDatePicker(
-                                  context: context,
-                                  firstDate: DateTime.now(),
-                                  lastDate: DateTime.now()
-                                      .add(const Duration(days: 90)),
-                                  initialDate: DateTime.now(),
-                                ).then((value) {
-                                  departureController.text =
-                                      DateFormat.yMMMd().format(value!);
-                                });
-                              },
-                              decoration: InputDecoration(
-                                labelText: 'Departure',
-                                labelStyle: const TextStyle(
-                                  color: Colors.grey,
-                                ),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                          // Departure Textfield
+                          Expanded(
+                            child: SizedBox(
+                              height: 50,
+                              child: TextFormField(
+                                readOnly: true,
+                                onTap: () {
+                                  showDatePicker(
+                                    context: context,
+                                    firstDate: DateTime.now(),
+                                    lastDate: DateTime.now()
+                                        .add(const Duration(days: 90)),
+                                    initialDate: DateTime.now(),
+                                  ).then((value) {
+                                    departureController.text =
+                                        DateFormat.yMMMd().format(value!);
+                                  });
+                                },
+                                decoration: InputDecoration(
+                                  labelText: 'Departure',
+                                  labelStyle: const TextStyle(
                                     color: Colors.grey,
                                   ),
-                                  borderRadius: BorderRadius.circular(10),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: const BorderSide(
+                                      color: Colors.grey,
+                                    ),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
                                 ),
+                                controller: departureController,
+                                keyboardType: TextInputType.datetime,
                               ),
-                              controller: departureController,
-                              keyboardType: TextInputType.datetime,
                             ),
                           ),
                           const SizedBox(
                             width: 30,
                           ),
-                          SizedBox(
-                            width: 130,
-                            height: 50,
-                            child: TextFormField(
-                              readOnly: true,
-                              onTap: () {
-                                showDatePicker(
-                                  context: context,
-                                  firstDate: DateTime.now(),
-                                  lastDate: DateTime.now()
-                                      .add(const Duration(days: 90)),
-                                  initialDate: DateTime.now(),
-                                ).then((value) {
-                                  returnController.text =
-                                      DateFormat.yMMMd().format(value!);
-                                });
-                              },
-                              decoration: InputDecoration(
-                                labelText: 'Return',
-                                labelStyle: const TextStyle(
-                                  color: Colors.grey,
-                                ),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                          // Return Textfield
+                          Expanded(
+                            child: SizedBox(
+                              height: 50,
+                              child: TextFormField(
+                                readOnly: true,
+                                onTap: () {
+                                  showDatePicker(
+                                    context: context,
+                                    firstDate: DateTime.now(),
+                                    lastDate: DateTime.now()
+                                        .add(const Duration(days: 90)),
+                                    initialDate: DateTime.now(),
+                                  ).then((value) {
+                                    returnController.text =
+                                        DateFormat.yMMMd().format(value!);
+                                  });
+                                },
+                                decoration: InputDecoration(
+                                  labelText: 'Return',
+                                  labelStyle: const TextStyle(
                                     color: Colors.grey,
                                   ),
-                                  borderRadius: BorderRadius.circular(10),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: const BorderSide(
+                                      color: Colors.grey,
+                                    ),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
                                 ),
+                                controller: returnController,
+                                keyboardType: TextInputType.datetime,
                               ),
-                              controller: returnController,
-                              keyboardType: TextInputType.datetime,
                             ),
                           ),
                         ],
                       ),
                     ),
+                    // Class Textfield
                     Padding(
                       padding: const EdgeInsets.only(top: 20.0),
                       child: DropdownButtonFormField<String>(
@@ -436,6 +461,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
                         ),
                       ),
                     ),
+                    // Search Button
                     Padding(
                       padding: const EdgeInsets.only(top: 20),
                       child: defaultButton(
@@ -451,6 +477,7 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
           ),
         ],
       ),
+      // Nav bar
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: const Color(0xFF161E36),
         type: BottomNavigationBarType.fixed,
@@ -493,6 +520,12 @@ class _HomeScreenLayoutState extends State<HomeScreenLayout> {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => EditProfileScreen()),
+            );
+          }
+          if (index == 0) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => HomeScreenLayout()),
             );
           }
         },
