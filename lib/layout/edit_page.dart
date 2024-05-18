@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import '../shared/components/components.dart';
+import 'login_page_layout.dart'; // Import the login screen
+import 'home_layout.dart'; // Import the login screen
 
-class EditProfileScreen extends StatefulWidget{
+class EditProfileScreen extends StatefulWidget {
   const EditProfileScreen({Key? key}) : super(key: key);
 
   @override
@@ -9,15 +11,24 @@ class EditProfileScreen extends StatefulWidget{
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController phoneController = TextEditingController();
+  bool isEditing = false;
+  final TextEditingController nameController =
+      TextEditingController(text: 'tooot');
+  final TextEditingController ageController = TextEditingController(text: '22');
+  final TextEditingController phoneController =
+      TextEditingController(text: '12345675');
+  final TextEditingController emailController =
+      TextEditingController(text: 'maher@gmail.com');
+  final TextEditingController genderController =
+      TextEditingController(text: 'Male');
 
   @override
   void dispose() {
     nameController.dispose();
-    emailController.dispose();
+    ageController.dispose();
     phoneController.dispose();
+    emailController.dispose();
+    genderController.dispose();
     super.dispose();
   }
 
@@ -27,81 +38,66 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       appBar: AppBar(
         title: const Text('Edit Profile'),
         backgroundColor: const Color(0xFF161E36),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.person),
+            onPressed: () {
+              _showPopupMenu(context);
+            },
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            defaultFormField(
-              controller: nameController,
-              textInputType: TextInputType.name,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter your name';
-                }
-                return null;
-              },
-              label: 'Name',
-              labelTextColor: Colors.grey,
-            ),
+            _buildProfileInfo('Name', nameController),
             const SizedBox(height: 20),
-            defaultFormField(
-              controller: emailController,
-              textInputType: TextInputType.emailAddress,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter your email';
-                }
-                return null;
-              },
-              label: 'Email',
-              labelTextColor: Colors.grey,
-            ),
+            _buildProfileInfo('Age', ageController),
             const SizedBox(height: 20),
-            defaultFormField(
-              controller: phoneController,
-              textInputType: TextInputType.phone,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter your phone number';
-                }
-                return null;
-              },
-              label: 'Phone',
-              labelTextColor: Colors.grey,
-            ),
+            _buildProfileInfo('Phone', phoneController),
+            const SizedBox(height: 20),
+            _buildProfileInfo('Email', emailController),
+            const SizedBox(height: 20),
+            _buildProfileInfo('Gender', genderController),
             const SizedBox(height: 30),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  // Implement save logic here
-                  // Show alert message
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        title: Text('Saved'),
-                        content: Text('Changes saved successfully.'),
-                        actions: <Widget>[
-                          TextButton(
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: Text('OK'),
-                          ),
-                        ],
-                      );
-                    },
-                  );
+                  if (isEditing) {
+                    // Implement save logic here
+                    // Show alert message
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text('Saved'),
+                          content: Text('Changes saved successfully.'),
+                          actions: <Widget>[
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Text('OK'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
 
-                  print('Name: ${nameController.text}');
-                  print('Email: ${emailController.text}');
-                  print('Phone: ${phoneController.text}');
+                    setState(() {
+                      isEditing = false;
+                    });
+                  } else {
+                    setState(() {
+                      isEditing = true;
+                    });
+                  }
                 },
                 child: Text(
-                  'Save',
+                  isEditing ? 'Save' : 'Edit',
                   style: TextStyle(
                     fontSize: 18.0,
                   ),
@@ -118,6 +114,110 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: const Color(0xFF161E36),
+        type: BottomNavigationBarType.fixed,
+        iconSize: 35,
+        selectedFontSize: 0,
+        unselectedFontSize: 0,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home,
+              color: Colors.white,
+            ),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.search,
+              color: Colors.white,
+            ),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.mail_outline,
+              color: Colors.white,
+            ),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.person,
+              color: Colors.white,
+              size: 30,
+            ),
+            label: '',
+          ),
+        ],
+        onTap: (index) {
+          if (index == 3) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => EditProfileScreen()),
+            );
+          }
+          if (index == 0) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => HomeScreenLayout()),
+            );
+          }
+        },
+      ),
+    );
+  }
+
+  void _showPopupMenu(BuildContext context) {
+    showMenu<String>(
+      context: context,
+      position:
+          RelativeRect.fromLTRB(1000, 80, 0, 0), // position of the popup menu
+      items: [
+        PopupMenuItem<String>(
+          value: 'logout',
+          child: Text('Log out'),
+        ),
+      ],
+    ).then((String? value) {
+      if (value == 'logout') {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => LoginScreenLayout()),
+        );
+      }
+    });
+  }
+
+  Widget _buildProfileInfo(String label, TextEditingController controller) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: 16.0,
+            color: Colors.grey,
+          ),
+        ),
+        const SizedBox(height: 5),
+        isEditing
+            ? TextField(
+                controller: controller,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Enter $label',
+                ),
+              )
+            : Text(
+                controller.text,
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+      ],
     );
   }
 }
