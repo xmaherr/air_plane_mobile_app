@@ -175,7 +175,7 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
                                     .pushReplacementNamed('/reset_password');
                               },
                               child: const Text(
-                                'Restore it now',
+                                'Reset Password',
                                 style: TextStyle(color: Colors.red),
                               ),
                             ),
