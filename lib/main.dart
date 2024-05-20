@@ -1,3 +1,4 @@
+import 'package:air_plane/layout/home_layout.dart';
 import 'package:air_plane/layout/login_page_layout.dart';
 import 'package:air_plane/layout/register_screen_layout.dart';
 import 'package:air_plane/modules/profile_page.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
     });
     return MaterialApp(
       routes: {
+        '/home_page': (context) => const HomeScreenLayout(),
         '/login_page': (context) => const LoginScreenLayout(),
         '/register_page': (context) => const RegisterScreenLayout(),
         '/search_screen': (context) => const SearchScreenModule(),
