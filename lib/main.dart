@@ -14,13 +14,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return    MaterialApp(
+    return MaterialApp(
       routes: {
         '/search_screen': (context) => SearchScreenModule(),
-        '/search_result': (context) => SearchResultScreen(),
+        '/search_result': (context) => const SearchResultScreen(),
       },
       debugShowCheckedModeBanner: false,
-      home: LoginScreenLayout(),
+      home: const LoginScreenLayout(),
     );
   }
 }
