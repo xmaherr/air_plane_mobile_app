@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'login_page_layout.dart'; // Import the login screen
 import 'home_layout.dart'; // Import the login screen
@@ -39,9 +40,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         backgroundColor: const Color(0xFF161E36),
         actions: [
           IconButton(
-            icon: Icon(Icons.person),
-            onPressed: () {
-              _showPopupMenu(context);
+            icon: const Icon(Icons.person),
+            onPressed: () async {
+              await FirebaseAuth.instance.signOut();
             },
           ),
         ],
@@ -72,8 +73,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
-                          title: Text('Saved'),
-                          content: Text('Changes saved successfully.'),
+                          title: const Text('Saved'),
+                          content: const Text('Changes saved successfully.'),
                           actions: <Widget>[
                             TextButton(
                               onPressed: () {
@@ -95,17 +96,17 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     });
                   }
                 },
-                child: Text(
-                  isEditing ? 'Save' : 'Edit',
-                  style: TextStyle(
-                    fontSize: 18.0,
-                  ),
-                ),
                 style: ButtonStyle(
                   backgroundColor:
                       WidgetStateProperty.all<Color>(const Color(0xFFFF8B3D)),
                   padding: WidgetStateProperty.all<EdgeInsetsGeometry>(
                     const EdgeInsets.symmetric(vertical: 16.0),
+                  ),
+                ),
+                child: Text(
+                  isEditing ? 'Save' : 'Edit',
+                  style: const TextStyle(
+                    fontSize: 18.0,
                   ),
                 ),
               ),
@@ -168,26 +169,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     );
   }
 
-  void _showPopupMenu(BuildContext context) {
-    showMenu<String>(
-      context: context,
-      position:
-          RelativeRect.fromLTRB(1000, 80, 0, 0), // position of the popup menu
-      items: [
-        PopupMenuItem<String>(
-          value: 'logout',
-          child: Text('Log out'),
-        ),
-      ],
-    ).then((String? value) {
-      if (value == 'logout') {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => LoginScreenLayout()),
-        );
-      }
-    });
-  }
 
   Widget _buildProfileInfo(String label, TextEditingController controller) {
     return Column(
@@ -195,7 +176,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       children: [
         Text(
           label,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 16.0,
             color: Colors.grey,
           ),
@@ -205,13 +186,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             ? TextField(
                 controller: controller,
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                   hintText: 'Enter $label',
                 ),
               )
             : Text(
                 controller.text,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold,
                 ),

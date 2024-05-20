@@ -1,4 +1,3 @@
-import 'package:air_plane/DB/db.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -155,8 +154,6 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return 'Phone is required';
-                              } else if (!isPhoneNumberValid(value)) {
-                                return 'this phone number used';
                               }
                               return null;
                             },
