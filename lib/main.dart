@@ -25,17 +25,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    FirebaseAuth.instance.authStateChanges().listen((User? user) {
-      if (user == null) {
-        if (kDebugMode) {
-          print('User is currently signed out!');
-        }
-      } else {
-        if (kDebugMode) {
-          print('User is signed in!');
-        }
-      }
-    });
     return MaterialApp(
       routes: {
         '/home_page': (context) => const HomeScreenLayout(),
@@ -47,7 +36,9 @@ class MyApp extends StatelessWidget {
         '/reset_password': (context) => PasswordResetScreen(),
       },
       debugShowCheckedModeBanner: false,
-      home: const LoginScreenLayout(),
+      home: FirebaseAuth.instance.currentUser == null
+          ? const LoginScreenLayout()
+          : const HomeScreenLayout(),
     );
   }
 }
