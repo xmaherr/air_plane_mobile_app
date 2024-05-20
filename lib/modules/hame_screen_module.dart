@@ -1,15 +1,16 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 class HomeScreenModule extends StatelessWidget {
-  const HomeScreenModule ({super.key});
+  const HomeScreenModule({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-            "Volami Airlines",
+        title: const Text(
+          "Volami Airlines",
           style: TextStyle(
             color: Colors.white,
             fontSize: 25,
@@ -22,32 +23,36 @@ class HomeScreenModule extends StatelessWidget {
       ),
       body: Container(
         width: double.infinity,
-        padding: EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
-            Text("welcome Maher",
-            style: TextStyle(
+            const Text(
+              "welcome Maher",
+              style: TextStyle(
                 fontSize: 20,
-              fontWeight: FontWeight.w100,
-              fontFamily: 'Times New Roman',
+                fontWeight: FontWeight.w100,
+                fontFamily: 'Times New Roman',
+              ),
             ),
-            ),
-            Divider(),
-            Row(
+            const Divider(),
+            const Row(
               children: [
-                Text("upcoming flights",
+                Text(
+                  "upcoming flights",
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w100,
                     fontFamily: 'Times New Roman',
                   ),
                 ),
-                SizedBox(width: 10,),
+                SizedBox(
+                  width: 10,
+                ),
                 Icon(Icons.flight_takeoff)
               ],
             ),
             Expanded(
-              child:  SingleChildScrollView(
+              child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
@@ -60,26 +65,32 @@ class HomeScreenModule extends StatelessWidget {
                         label: Text('Route'),
                       ),
                       DataColumn(
-                        label: Text('Cancle'),
+                        label: Text('Cancel'),
                       ),
                     ],
                     rows: List<DataRow>.generate(
                       20,
-                          (index) => DataRow(
+                      (index) => DataRow(
                         cells: <DataCell>[
-                          DataCell(Text(DateFormat.yMMMd().format(DateTime.now()))), DataCell(
+                          DataCell(
+                              Text(DateFormat.yMMMd().format(DateTime.now()))),
+                          DataCell(
                             ConstrainedBox(
-                              constraints: BoxConstraints(maxWidth: 90), // Limit the width of the Route column
-                              child: Text('Cairo-London'),
+                              constraints: const BoxConstraints(maxWidth: 90),
+                              // Limit the width of the Route column
+                              child: const Text('Cairo-London'),
                             ),
                           ),
                           DataCell(
                             IconButton(
-                              icon: Icon(Icons.cancel),
+                              icon: const Icon(Icons.cancel),
                               color: Colors.red,
                               onPressed: () {
                                 // Define your cancel button action here
-                                print('Cancel button pressed for Person $index');
+                                if (kDebugMode) {
+                                  print(
+                                      'Cancel button pressed for Person $index');
+                                }
                               },
                             ),
                           ),

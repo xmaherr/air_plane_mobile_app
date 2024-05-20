@@ -1,3 +1,4 @@
+import 'package:air_plane/layout/profile_page.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:meta/meta.dart';
@@ -11,16 +12,16 @@ part 'app_state.dart';
 class AppCubit extends Cubit<AppState> {
   AppCubit() : super(AppInitial());
   int screenIndex = 0;
-  List<Widget> currentScreen =[
+  List<Widget> currentScreen = [
     SearchScreenModule(),
     HomeScreenModule(),
+    ProfileScreen(),
   ];
 
   static AppCubit get(context) => BlocProvider.of(context);
 
-  void changeScreenIndex({required int index})
-  {
-    this.screenIndex=index;
+  void changeScreenIndex({required int index}) {
+    this.screenIndex = index;
     emit(ChangeScreenState());
   }
 }
