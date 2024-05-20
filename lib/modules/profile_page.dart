@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'login_page_layout.dart'; // Import the login screen
-import 'home_layout.dart'; // Import the login screen
+import '../layout/login_page_layout.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -95,12 +94,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     });
                   }
                 },
-                child: Text(
-                  isEditing ? 'Save' : 'Edit',
-                  style: TextStyle(
-                    fontSize: 18.0,
-                  ),
-                ),
                 style: ButtonStyle(
                   backgroundColor:
                       WidgetStateProperty.all<Color>(const Color(0xFFFF8B3D)),
@@ -108,62 +101,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     const EdgeInsets.symmetric(vertical: 16.0),
                   ),
                 ),
+                child: Text(
+                  isEditing ? 'Save' : 'Edit',
+                  style: const TextStyle(
+                    fontSize: 18.0,
+                  ),
+                ),
               ),
             ),
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color(0xFF161E36),
-        type: BottomNavigationBarType.fixed,
-        iconSize: 35,
-        selectedFontSize: 0,
-        unselectedFontSize: 0,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              color: Colors.white,
-            ),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.search,
-              color: Colors.white,
-            ),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.mail_outline,
-              color: Colors.white,
-            ),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person,
-              color: Colors.white,
-              size: 30,
-            ),
-            label: '',
-          ),
-        ],
-        onTap: (index) {
-          if (index == 3) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => ProfileScreen()),
-            );
-          }
-          if (index == 0) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => HomeScreenLayout()),
-            );
-          }
-        },
       ),
     );
   }

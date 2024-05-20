@@ -1,10 +1,10 @@
-import 'package:air_plane/layout/profile_page.dart';
+import 'package:air_plane/modules/profile_page.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:meta/meta.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../modules/hame_screen_module.dart';
+import '../../modules/home_screen_module.dart';
 import '../../modules/search_screen_module.dart';
 
 part 'app_state.dart';
@@ -21,7 +21,7 @@ class AppCubit extends Cubit<AppState> {
   static AppCubit get(context) => BlocProvider.of(context);
 
   void changeScreenIndex({required int index}) {
-    this.screenIndex = index;
+    screenIndex = index;
     emit(ChangeScreenState());
   }
 }
