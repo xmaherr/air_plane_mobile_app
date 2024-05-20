@@ -2,7 +2,7 @@ import 'package:air_plane/layout/home_layout.dart';
 import 'package:flutter/material.dart';
 import '../DB/db.dart';
 import '../shared/components/components.dart';
-import 'register_screen_layout.dart'; // Import the register screen file
+// Import the register screen file
 
 class LoginScreenLayout extends StatefulWidget {
   const LoginScreenLayout({super.key});
@@ -125,6 +125,7 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
                         const SizedBox(
                           height: 40,
                         ),
+                        // login button
                         defaultButton(
                           function: () {
                             if (formKey.currentState!.validate()) {
@@ -153,6 +154,7 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
                           radius: 15,
                           textSize: 20,
                         ),
+                        // register now
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -160,17 +162,29 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
                             TextButton(
                               onPressed: () {
                                 // Navigate to the register screen
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        const RegisterScreenLayout(),
-                                  ),
-                                );
+                                Navigator.of(context)
+                                    .pushReplacementNamed('/register_page');
                               },
                               child: const Text(
                                 'Register Now',
                                 style: TextStyle(color: Colors.grey),
+                              ),
+                            ),
+                          ],
+                        ),
+                        // forgot password
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text('Forgot your password?'),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context)
+                                    .pushReplacementNamed('/reset_password');
+                              },
+                              child: const Text(
+                                'Restore it now',
+                                style: TextStyle(color: Colors.red),
                               ),
                             ),
                           ],

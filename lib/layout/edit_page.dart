@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import '../shared/components/components.dart';
 import 'login_page_layout.dart'; // Import the login screen
 import 'home_layout.dart'; // Import the login screen
 
 class EditProfileScreen extends StatefulWidget {
-  const EditProfileScreen({Key? key}) : super(key: key);
+  const EditProfileScreen({super.key});
 
   @override
   _EditProfileScreenState createState() => _EditProfileScreenState();
@@ -104,8 +103,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 ),
                 style: ButtonStyle(
                   backgroundColor:
-                      MaterialStateProperty.all<Color>(const Color(0xFFFF8B3D)),
-                  padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                      WidgetStateProperty.all<Color>(const Color(0xFFFF8B3D)),
+                  padding: WidgetStateProperty.all<EdgeInsetsGeometry>(
                     const EdgeInsets.symmetric(vertical: 16.0),
                   ),
                 ),

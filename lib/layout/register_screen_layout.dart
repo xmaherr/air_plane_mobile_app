@@ -1,8 +1,7 @@
 import 'package:air_plane/DB/db.dart';
-import 'package:air_plane/layout/login_page_layout.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../models/user.dart';
 import '../shared/components/components.dart';
 
 class RegisterScreenLayout extends StatefulWidget {
@@ -227,22 +226,22 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                             height: 30,
                           ),
                           defaultButton(
-                            function: () {
-                              if (formKey.currentState!.validate()) {
-                                addUser(User(
-                                  firstNameController.text,
-                                  lastNameController.text,
-                                  emailController.text,
-                                  phoneNumberController.text,
-                                  passwordController.text,
-                                ));
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        const LoginScreenLayout(),
-                                  ),
+                            function: () async {
+                              try {
+                                final credential = await FirebaseAuth.instance
+                                    .createUserWithEmailAndPassword(
+                                  email: emailController.text,
+                                  password: passwordController.text,
                                 );
+                              } on FirebaseAuthException catch (e) {
+                                if (e.code == 'weak-password') {
+                                  print('The password provided is too weak.');
+                                } else if (e.code == 'email-already-in-use') {
+                                  print(
+                                      'The account already exists for that email.');
+                                }
+                              } catch (e) {
+                                print(e);
                               }
                             },
                             text: 'Register',
@@ -257,14 +256,8 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                               ),
                               TextButton(
                                 onPressed: () {
-                                  // Navigate to the register screen
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          const LoginScreenLayout(),
-                                    ),
-                                  );
+                                  Navigator.of(context)
+                                      .pushReplacementNamed('/login_page');
                                 },
                                 child: const Text(
                                   'Login',
