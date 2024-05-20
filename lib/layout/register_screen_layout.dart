@@ -63,14 +63,14 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
-                        'Register',
+                        'Sign Up',
                         style: TextStyle(
                           fontSize: 50,
                           color: Colors.white,
                         ),
                       ),
                       Text(
-                        'Register now at MARO Airlines',
+                        'Register now at Volami ✈︎',
                         style: TextStyle(
                           fontSize: 20,
                           color: Colors.white.withOpacity(0.8),
@@ -169,7 +169,7 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                           defaultFormField(
                             controller: passwordController,
                             textInputType: TextInputType.text,
-                            validator:  (value) {
+                            validator: (value) {
                               if (value!.isEmpty) {
                                 return 'password is required';
                               } else if (value != passwordController2.text) {
@@ -199,7 +199,7 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                           defaultFormField(
                             controller: passwordController2,
                             textInputType: TextInputType.text,
-                            validator:  (value) {
+                            validator: (value) {
                               if (value!.isEmpty) {
                                 return 'password is required';
                               } else if (value != passwordController.text) {

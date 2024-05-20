@@ -11,12 +11,12 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   bool isEditing = false;
   final TextEditingController nameController =
-      TextEditingController(text: 'tooot');
+      TextEditingController(text: 'Omar');
   final TextEditingController ageController = TextEditingController(text: '22');
   final TextEditingController phoneController =
       TextEditingController(text: '12345675');
   final TextEditingController emailController =
-      TextEditingController(text: 'maher@gmail.com');
+      TextEditingController(text: 'omar@gmail.com');
   final TextEditingController genderController =
       TextEditingController(text: 'Male');
 
@@ -38,7 +38,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         backgroundColor: const Color(0xFF161E36),
         actions: [
           IconButton(
-            icon: Icon(Icons.person),
+            icon: const Icon(Icons.person),
             onPressed: () {
               _showPopupMenu(context);
             },
@@ -71,14 +71,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
-                          title: Text('Saved'),
-                          content: Text('Changes saved successfully.'),
+                          title: const Text('Saved'),
+                          content: const Text('Changes saved successfully.'),
                           actions: <Widget>[
                             TextButton(
                               onPressed: () {
                                 Navigator.of(context).pop();
                               },
-                              child: Text('OK'),
+                              child: const Text('OK'),
                             ),
                           ],
                         );
@@ -118,10 +118,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void _showPopupMenu(BuildContext context) {
     showMenu<String>(
       context: context,
-      position:
-          RelativeRect.fromLTRB(1000, 80, 0, 0), // position of the popup menu
+      position: const RelativeRect.fromLTRB(
+          1000, 80, 0, 0), // position of the popup menu
       items: [
-        PopupMenuItem<String>(
+        const PopupMenuItem<String>(
           value: 'logout',
           child: Text('Log out'),
         ),
@@ -142,7 +142,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       children: [
         Text(
           label,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 16.0,
             color: Colors.grey,
           ),
@@ -152,13 +152,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ? TextField(
                 controller: controller,
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                   hintText: 'Enter $label',
                 ),
               )
             : Text(
                 controller.text,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold,
                 ),

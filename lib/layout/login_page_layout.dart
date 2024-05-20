@@ -48,14 +48,14 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      'Login',
+                      'Sign in',
                       style: TextStyle(
                         fontSize: 50,
                         color: Colors.white,
                       ),
                     ),
                     Text(
-                      'Welcome to MARO Airlines',
+                      'Welcome to Volami ✈︎ ',
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.white.withOpacity(0.8),
@@ -134,7 +134,7 @@ class _LoginScreenLayoutState extends State<LoginScreenLayout> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) =>
-                                          HomeScreenLayout(),
+                                        const HomeScreenLayout(),
                                   ),
                                 );
                               } else {
