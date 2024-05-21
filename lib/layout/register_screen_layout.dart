@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
@@ -25,12 +27,38 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
 
   var lastNameController = TextEditingController();
 
+  String? randomUserID;
+
   var formKey = GlobalKey<FormState>();
 
   bool isPassword = true;
 
+  // method to created and store random id
+  String generateUserId() {
+    const String chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    Random random = Random();
+
+    return String.fromCharCodes(Iterable.generate(
+        8, (_) => chars.codeUnitAt(random.nextInt(chars.length))));
+  }
+
   // created a collection into firestore named users
   CollectionReference users = FirebaseFirestore.instance.collection('users');
+
+  Future<void> addUser() {
+    // Call the user's CollectionReference to add a new user
+    return users
+        .add({
+          'user_id': generateUserId(),
+          'first_name': firstNameController.text,
+          'last_name': lastNameController.text,
+          'email': emailController.text,
+          'phone': phoneNumberController.text,
+          'password': passwordController.text,
+        })
+        .then((value) => print("User Added"))
+        .catchError((error) => print("Failed to add user: $error"));
+  }
 
   //bool isVisible = false;
 
@@ -229,6 +257,7 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                           ),
                           defaultButton(
                             function: () async {
+                              addUser();
                               if (formKey.currentState!.validate()) {
                                 try {
                                   final credential = await FirebaseAuth.instance
