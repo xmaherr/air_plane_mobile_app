@@ -37,10 +37,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-            'Profile',
-          style: TextStyle(
-            color: Colors.white
-          ),
+          'Profile',
+          style: TextStyle(color: Colors.white),
         ),
         backgroundColor: const Color(0xFF161E36),
         actions: [
@@ -58,7 +56,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CircleAvatar(
@@ -71,7 +69,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: 40.0),
+              const SizedBox(height: 40.0),
               GestureDetector(
                 onTap: () {
                   setState(() {
@@ -79,13 +77,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   });
                 },
                 child: Container(
-                  padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                   width: double.infinity,
                   child: Row(
                     children: [
                       Text(
-                        isUserDataVisible ? 'Hide Personal Information' : 'Show Personal Information',
-                        style: TextStyle(
+                        isUserDataVisible
+                            ? 'Hide Personal Information'
+                            : 'Show Personal Information',
+                        style: const TextStyle(
                           color: Color(0xFF161E36),
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
@@ -93,8 +94,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       Spacer(flex: 1),
                       Icon(
-                        isUserDataVisible ? Icons.arrow_drop_up_outlined : Icons.arrow_drop_down_outlined,
-                        color: Color(0xFFFF8B3D),
+                        isUserDataVisible
+                            ? Icons.arrow_drop_up_outlined
+                            : Icons.arrow_drop_down_outlined,
+                        color: const Color(0xFFFF8B3D),
                         size: 35,
                       ),
                     ],
@@ -137,7 +140,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       builder: (BuildContext context) {
                                         return AlertDialog(
                                           title: const Text('Saved'),
-                                          content: const Text('Changes saved successfully.'),
+                                          content: const Text(
+                                              'Changes saved successfully.'),
                                           actions: <Widget>[
                                             TextButton(
                                               onPressed: () {
@@ -149,7 +153,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         );
                                       },
                                     );
-        
+
                                     setState(() {
                                       isEditing = false;
                                     });
@@ -160,8 +164,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   }
                                 },
                                 style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFFFF8B3D)),
-                                  padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                                  backgroundColor:
+                                      WidgetStateProperty.all<Color>(
+                                          const Color(0xFFFF8B3D)),
+                                  padding: WidgetStateProperty.all<
+                                      EdgeInsetsGeometry>(
                                     const EdgeInsets.symmetric(vertical: 16.0),
                                   ),
                                 ),
@@ -183,15 +190,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
               GestureDetector(
                 onTap: () {
                   setState(() {
-                    isSecurityVisible= !isSecurityVisible;
+                    isSecurityVisible = !isSecurityVisible;
                   });
                 },
                 child: Container(
-                  padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                   width: double.infinity,
                   child: Row(
                     children: [
-                      Text(
+                      const Text(
                         'security',
                         style: TextStyle(
                           color: Color(0xFF161E36),
@@ -199,27 +207,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           fontSize: 20,
                         ),
                       ),
-                      Spacer(flex: 1),
+                      const Spacer(flex: 1),
                       Icon(
-                        isSecurityVisible ? Icons.arrow_drop_up_outlined : Icons.arrow_drop_down_outlined,
-                        color: Color(0xFFFF8B3D),
+                        isSecurityVisible
+                            ? Icons.arrow_drop_up_outlined
+                            : Icons.arrow_drop_down_outlined,
+                        color: const Color(0xFFFF8B3D),
                         size: 35,
                       ),
                     ],
                   ),
                 ),
               ),
-              if(isSecurityVisible)...[
+              if (isSecurityVisible) ...[
                 GestureDetector(
                   onTap: () {
-                    Navigator.of(context)
-                        .pushNamed('/reset_password');
+                    Navigator.of(context).pushNamed('/reset_password');
                   },
                   child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 20),
                     width: double.infinity,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                    child: const Padding(
+                      padding: EdgeInsets.all(8.0),
                       child: Text(
                         'reset password',
                         style: TextStyle(
@@ -236,7 +246,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ),
       ),
-
     );
   }
 
@@ -255,7 +264,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       if (value == 'logout') {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => LoginScreenLayout()),
+          MaterialPageRoute(builder: (context) => const LoginScreenLayout()),
         );
       }
     });
@@ -292,7 +301,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  Widget buildUserData(){
+  Widget buildUserData() {
     return Container(
       width: 100,
       padding: const EdgeInsets.all(16.0),
@@ -300,7 +309,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         color: Colors.grey.shade200,
         borderRadius: BorderRadius.circular(8.0),
       ),
-      child: Column(
+      child: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
@@ -308,17 +317,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
             style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
           ),
           Text("maher"),
-          const SizedBox(height: 8.0),
+          SizedBox(height: 8.0),
           Text(
             'Age:',
             style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
           ),
           Text("19"),
-          const SizedBox(height: 8.0),
+          SizedBox(height: 8.0),
           // Add similar lines for phone, email, gender, and date of birth
         ],
       ),
     );
   }
-
 }

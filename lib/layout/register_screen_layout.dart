@@ -49,7 +49,7 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
     // Call the user's CollectionReference to add a new user
     return users
         .add({
-          'user_id': generateUserId(),
+          'user_id': 'user-${generateUserId()}',
           'first_name': firstNameController.text,
           'last_name': lastNameController.text,
           'email': emailController.text,
