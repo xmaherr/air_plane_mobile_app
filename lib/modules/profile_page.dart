@@ -20,6 +20,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   final TextEditingController genderController =
       TextEditingController(text: 'Male');
   bool isUserDataVisible = false;
+  bool isSecurityVisible = false;
 
   @override
   void dispose() {
@@ -179,6 +180,58 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
               ],
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isSecurityVisible= !isSecurityVisible;
+                  });
+                },
+                child: Container(
+                  padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  width: double.infinity,
+                  child: Row(
+                    children: [
+                      Text(
+                        'security',
+                        style: TextStyle(
+                          color: Color(0xFF161E36),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                      ),
+                      Spacer(flex: 1),
+                      Icon(
+                        isSecurityVisible ? Icons.arrow_drop_up_outlined : Icons.arrow_drop_down_outlined,
+                        color: Color(0xFFFF8B3D),
+                        size: 35,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              if(isSecurityVisible)...[
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context)
+                        .pushNamed('/reset_password');
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                    width: double.infinity,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'reset password',
+                        style: TextStyle(
+                          color: Color(0xFF161E36),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ]
             ],
           ),
         ),
