@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +28,9 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
   var formKey = GlobalKey<FormState>();
 
   bool isPassword = true;
+
+  // created a collection into firestore named users
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
 
   //bool isVisible = false;
 
