@@ -97,12 +97,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   }
                 },
                 style: ButtonStyle(
-                  backgroundColor:
-                      WidgetStateProperty.all<Color>(const Color(0xFFFF8B3D)),
-                  padding: WidgetStateProperty.all<EdgeInsetsGeometry>(
+                  backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFFFF8B3D)),
+                  padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
                     const EdgeInsets.symmetric(vertical: 16.0),
                   ),
                 ),
+
                 child: Text(
                   isEditing ? 'Save' : 'Edit',
                   style: const TextStyle(
