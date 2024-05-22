@@ -13,7 +13,7 @@ class UserCubit extends Cubit<UserState> {
   Future<void> fetchUser(String uid) async {
     try {
       emit(UserLoading());
-      User? user = await _userRepository.getUser(uid);
+      UserModel? user = await _userRepository.getUser(uid);
       if (user != null) {
         emit(UserLoaded(user));
       } else {

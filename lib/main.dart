@@ -36,9 +36,10 @@ class MyApp extends StatelessWidget {
         '/reset_password': (context) => PasswordResetScreen(),
       },
       debugShowCheckedModeBanner: false,
-      home: FirebaseAuth.instance.currentUser == null
-          ? const LoginScreenLayout()
-          : const HomeScreenLayout(),
+      home:
+      // FirebaseAuth.instance.currentUser == null ?
+          const LoginScreenLayout()
+          // : const HomeScreenLayout(),
     );
   }
 }

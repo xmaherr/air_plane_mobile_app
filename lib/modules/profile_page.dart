@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../layout/login_page_layout.dart';
+import '../models/user_model.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -11,17 +13,32 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   bool isEditing = false;
   final TextEditingController nameController =
-      TextEditingController(text: 'Omarrr');
+      TextEditingController(text: UserModel.currentUser?.name);
   final TextEditingController ageController = TextEditingController(text: '22');
   final TextEditingController phoneController =
-      TextEditingController(text: '12345675');
+      TextEditingController(text: UserModel.currentUser?.phone);
   final TextEditingController emailController =
-      TextEditingController(text: 'omar@gmail.com');
+      TextEditingController(text: UserModel.currentUser?.email);
   final TextEditingController genderController =
-      TextEditingController(text: 'Male');
+      TextEditingController(text: UserModel.currentUser?.gender);
   bool isUserDataVisible = false;
   bool isSecurityVisible = false;
+  List data = [];
 
+  getData() async{
+    // if (UserModel.currentUser != null) {
+    //   await FirebaseFirestore.instance.collection('users').doc(user.uid).set({
+    //     'email': email,
+    //     'first_name': firstName,
+    //   });
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    var db = FirebaseFirestore.instance;
+
+  }
   @override
   void dispose() {
     nameController.dispose();

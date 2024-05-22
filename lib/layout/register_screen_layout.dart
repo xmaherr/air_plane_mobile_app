@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -231,6 +232,17 @@ class _RegisterScreenLayoutState extends State<RegisterScreenLayout> {
                                   email: emailController.text,
                                   password: passwordController.text,
                                 );
+                                final userId = credential.user?.uid;
+                                final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+                                await _firestore.collection('users').doc(userId).set({
+                                  'email': emailController.text,
+                                  'first_name': firstNameController.text,
+                                  'last_name' : lastNameController.text,
+                                  'password' :  passwordController2.text,
+                                   'phone' : phoneNumberController.text,
+                                  'gender': 'Male',
+                                  // Add other user data here
+                                });
                                 Navigator.of(context)
                                     .pushReplacementNamed('/login_page');
                                 showDialog(
